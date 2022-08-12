@@ -1,0 +1,18 @@
+{
+  "posts": [
+    {
+        "id": 1,
+        "userNickname" : "작성자",
+        "imageUrl" :"/images/cancle.png"
+    }
+    ],
+  "comments": [
+    {
+          "id": 1,
+          "userCommented" : "댓글 작성자",
+          "title" : "제목",
+          "likesNum" : "댓글 좋아요 수",
+          "postId" : 1
+    }
+  ]
+}
