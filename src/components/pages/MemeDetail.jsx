@@ -1,13 +1,13 @@
 import Layout from '../common/Layout';
-import BestContents from '../best/BestContents'
-import BestCommentView from '../best/BestCommentView'
+import MemeContents from '../meme/MemeContents'
+import MemeCommentView from '../meme/MemeCommentView'
 
 const BestDetail = () => {
     return (
         <>
             <Layout>
-                <BestContents/>
-                <BestCommentView/>
+                <MemeContents/>
+                <MemeCommentView/>
             </Layout>
         </>
     );
