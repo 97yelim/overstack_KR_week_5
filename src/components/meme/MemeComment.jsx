@@ -1,18 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const MemeComment = () => {
+const MemeComment = ({comment}) => {
+
+
     return (
         <StMemeComment>
             <div>
-                <div>노진구</div>
+                <div>{comment.userCommented}</div>
                 <div>
                     <StButton>수정</StButton>
                     <StButton>삭제</StButton>
                 </div>
             </div>
             <div>
-                <div>ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ</div>
+                <div>{comment.comment}</div>
                 <StButton>답글</StButton>
             </div>
         </StMemeComment>

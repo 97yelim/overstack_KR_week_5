@@ -21,14 +21,26 @@
     {
       "id": 1,
       "userCommented" : "댓글 작성자",
-      "title" : "제목",
+      "comment" : "댓글",
       "postId" : 1
     },
     {
       "id": 2,
       "userCommented" : "댓글 작성자2",
-      "title" : "제목2",
+      "comment" : "댓글2",
       "postId" : 1
+    },
+    {
+      "id": 1,
+      "userCommented" : "댓글 작성자3",
+      "comment" : "댓글3",
+      "postId" : 2
+    },
+    {
+      "id": 2,
+      "userCommented" : "댓글 작성자4",
+      "comment" : "댓글4",
+      "postId" : 2
     }
   ]
 }
