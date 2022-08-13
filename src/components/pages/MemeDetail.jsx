@@ -1,16 +1,18 @@
-import Layout from '../common/Layout';
-import MemeContents from '../meme/MemeContents'
-import MemeCommentView from '../meme/MemeCommentView'
+import React from 'react';
+import MemeCommentView from '../meme/MemeCommentView';
+import Header from '../common/Header'
+import Layout from '../common/Layout'
 
-const BestDetail = () => {
+
+const MemeDetail = () => {
     return (
         <>
-            <Layout>
-                <MemeContents/>
-                <MemeCommentView/>
-            </Layout>
+        <Header/>
+        <Layout>
+            <MemeCommentView/>
+        </Layout>
         </>
     );
 };
 
-export default BestDetail;
+export default MemeDetail;
