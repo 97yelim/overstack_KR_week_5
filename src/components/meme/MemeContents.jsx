@@ -36,7 +36,7 @@ const StImgbox = styled.div`
     background-image: "";
     background-position: center;
     background-size: cover;
-    background-color: ${(props) => props.theme.mainColor};
+    background-color: ${(props) => props.theme.colors.mainColor};
     border-radius: 20px;
     margin: 0 auto;
     position: relative;
@@ -49,20 +49,20 @@ const StTitle = styled.div`
         width: 560px;
         display: flex;
         justify-content: space-between;
+        align-items: center;
         margin-bottom: 10px;
         h1 {
-            font-size: 25px;
-            font-weight: bold;
+            font-size: ${(props) => props.theme.fontsizes.subtitle}
         }
         button {
             transition: all 0.3s;
             border: none;
-            background-color: ${(props) => props.theme.buttonColor};
-            color: ${(props) => props.theme.textColor2};
+            background-color: ${(props) => props.theme.colors.buttonColor};
+            color: ${(props) => props.theme.colors.textColor2};
             padding: 10px 30px;
             border-radius: 15px;
             &:hover {background-color: #fff;
-                color: ${(props) => props.theme.textColor1};
+                color: ${(props) => props.theme.colors.textColor1};
             };
         }
     }
@@ -75,12 +75,12 @@ const StMemeHeader = styled.div`
     button {
         transition: all 0.3s;
         border: none;
-        background-color: ${(props) => props.theme.buttonColor};
-        color: ${(props) => props.theme.textColor2};
+        background-color: ${(props) => props.theme.colors.buttonColor};
+        color: ${(props) => props.theme.colors.textColor2};
         padding: 10px 15px;
         border-radius: 15px;
-        &:hover {background-color: ${(props) => props.theme.hoverColor};
-            color: ${(props) => props.theme.textColor1};
+        &:hover {background-color: ${(props) => props.theme.colors.hoverColor};
+            color: ${(props) => props.theme.colors.textColor1};
         };
     }
 `

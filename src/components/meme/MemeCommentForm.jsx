@@ -5,7 +5,7 @@ const MemeCommentForm = () => {
     return (
         <StMemeCommentForm>
             <div>
-                <StLabel for="">댓글</StLabel>
+                <StLabel>댓글</StLabel>
                 <StInput placeholder='댓글을 입력하세요' />
             </div>
             <StButton>입력하기</StButton>
@@ -35,14 +35,15 @@ const StInput = styled.input`
 `
 
 const StButton = styled.button`
+    transition: all 0.3s;
     padding: 10px 15px;
     border-radius: 15px;
     border: none;
-    color: ${(props) => props.theme.textColor2};
-    background-color: ${(props) => props.theme.buttonColor};
+    color: ${(props) => props.theme.colors.textColor2};
+    background-color: ${(props) => props.theme.colors.buttonColor};
     &:hover {
-        color: ${(props) => props.theme.textColor1};
-        background-color: ${(props) => props.theme.mainColor};
+        color: ${(props) => props.theme.colors.textColor1};
+        background-color: ${(props) => props.theme.colors.mainColor};
     }
 `
 

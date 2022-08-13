@@ -1,18 +1,34 @@
 {
-  "posts": [
+  "posts": 
+  [
     {
-        "id": 1,
-        "userNickname" : "작성자",
-        "imageUrl" :"/images/cancle.png"
+      "id": 1,
+      "userNickname" : "작성자",
+      "imageUrl" :"/images/cancle.png",
+      "title" : "게시글 제목입니다",
+      "like_num" : 0 
+    },
+    {
+      "id": 2,
+      "userNickname" : "작성자2",
+      "imageUrl" :"/images/cancle.png",
+      "title" : "게시글 제목입니다2",
+      "like_num" : 0 
     }
-    ],
-  "comments": [
+  ],
+  "comments": 
+  [
     {
-          "id": 1,
-          "userCommented" : "댓글 작성자",
-          "title" : "제목",
-          "likesNum" : "댓글 좋아요 수",
-          "postId" : 1
+      "id": 1,
+      "userCommented" : "댓글 작성자",
+      "title" : "제목",
+      "postId" : 1
+    },
+    {
+      "id": 2,
+      "userCommented" : "댓글 작성자2",
+      "title" : "제목2",
+      "postId" : 1
     }
   ]
 }

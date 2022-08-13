@@ -32,15 +32,16 @@ const StMemeComment = styled.div`
 `
 
 const StButton = styled.button`
+    transition: all 0.3s;
     padding: 10px 15px;
     border-radius: 15px;
     border: none;
-    color: ${(props) => props.theme.textColor2};
-    background-color: ${(props) => props.theme.buttonColor};
+    color: ${(props) => props.theme.colors.textColor2};
+    background-color: ${(props) => props.theme.colors.buttonColor};
     margin-left: 10px;
     &:hover {
-        color: ${(props) => props.theme.textColor1};
-        background-color: ${(props) => props.theme.mainColor};
+        color: ${(props) => props.theme.colors.textColor1};
+        background-color: ${(props) => props.theme.colors.mainColor};
     }
 `
 
