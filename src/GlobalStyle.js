@@ -24,8 +24,30 @@ const GlobalStyle = createGlobalStyle`
 
 
 *{font-family: 'SUIT-Medium';}
+p,span {
+    font-size: ${(props) => props.theme.fontsizes.contentstext};
+}
 
+button {
+    padding: 10px 20px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    transition: all .3s;
+    font-family: 'SUIT-SemiBold';
+    &:hover{
+        background-color:${(props) => props.theme.colors.hoverColor};
+    }
+}
 
+input {
+    width: 100%;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    border-radius: 50px;
+    background-color:${(props) => props.theme.colors.boxColor};
+    border: none;
+}
 `;
 
 export default GlobalStyle;
