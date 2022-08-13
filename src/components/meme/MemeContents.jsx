@@ -4,8 +4,24 @@ import MemeCommentForm from './MemeCommentForm';
 import MemeCommentList from './MemeCommentList';
 import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useParams, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from "react";
+import { __getPost } from "../../redux/modules/post";
 
 const MemeContents = () => {
+    const { postId } = useParams();
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const post = useSelector((state) => state.post.post);
+    const { id, title, userNickname } = post;
+
+    useEffect(() => {
+        dispatch(__getPost(postId));
+        console.log(title)
+      }, [dispatch, postId]);
+
+
     return (
         <div>
             <StMemeHeader>
@@ -15,11 +31,11 @@ const MemeContents = () => {
             <StImgbox>
                 <StTitle>
                     <div>
-                        <h1>초기 타이틀이 들어갑니다</h1>
+                        <h1>{title}</h1>
                         <p><FontAwesomeIcon icon={faThumbsUp} /> 212</p>
                     </div>
                     <div>
-                        <p>작성자: 도라에몽</p>
+                        <p>작성자: {userNickname}</p>
                         <button><FontAwesomeIcon icon={faThumbsUp}/></button>
                     </div>
                 </StTitle>
