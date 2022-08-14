@@ -63,6 +63,30 @@
       "userCommented": "퉁퉁이",
       "comment": "하이하이",
       "id": 6
+    },
+    {
+      "postId": 1,
+      "userCommented": "퉁퉁이",
+      "comment": "하이",
+      "id": 7
+    },
+    {
+      "postId": 1,
+      "userCommented": "퉁퉁이",
+      "comment": "나는 야 퉁퉁이 ",
+      "id": 8
+    },
+    {
+      "postId": 1,
+      "userCommented": "퉁퉁이",
+      "comment": "하이",
+      "id": 9
+    },
+    {
+      "postId": 1,
+      "userCommented": "퉁퉁이",
+      "comment": "안녕하세요",
+      "id": 10
     }
   ]
 }

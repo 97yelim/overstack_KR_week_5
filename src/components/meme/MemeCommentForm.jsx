@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { useForm } from "react-hook-form"
-import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { __createComment } from '../../redux/modules/comment';
 
-const MemeCommentForm = () => {
+const MemeCommentForm = ({ comments, setComments }) => {
     const { postId } = useParams();
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
+    const dispatch = useDispatch()
 
     const black_pattern = /^\s+|\s+$/g;
     const isBlank = (value) => (
@@ -19,10 +21,8 @@ const MemeCommentForm = () => {
             userCommented: "퉁퉁이",
             comment: data.comment
         }
-        const postComments = async () => {
-            const response = await axios.post('http://localhost:3001/comments', new_comment);
-        }
-        postComments()
+
+        dispatch(__createComment(new_comment));        
         reset({ comment: " " })
     }
     const onError = (errors, e) => console.log(errors, e);

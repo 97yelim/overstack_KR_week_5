@@ -4,7 +4,7 @@ import MemeCommentForm from './MemeCommentForm';
 import MemeCommentList from './MemeCommentList';
 import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from "react";
 import { __getPost } from "../../redux/modules/post";
@@ -18,7 +18,6 @@ const MemeContents = () => {
     useEffect(() => {
         dispatch(__getPost(postId));
       }, [dispatch, postId]);
-
 
     return (
         <div>
