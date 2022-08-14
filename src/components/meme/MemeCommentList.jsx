@@ -4,17 +4,17 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { __getComments } from '../../redux/modules/comment';
 
 const MemeCommentList = () => {
-    const [comments, setComments] = useState(null);
     const { postId } = useParams();
-    const getComments = async () => {
-        const { data } = await axios.get(`http://localhost:3001/comments?postId=${postId}`);
-        setComments(data);
-    }
+    const dispatch = useDispatch()
+    const comments = useSelector((state) => state.comment.comments)
+    
     useEffect(() => {
-        getComments();
-    }, [])
+        dispatch(__getComments(postId));
+    }, [dispatch, postId])
 
     return (
         <div>
