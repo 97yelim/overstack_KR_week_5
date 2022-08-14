@@ -87,6 +87,90 @@
       "userCommented": "퉁퉁이",
       "comment": "안녕하세요",
       "id": 10
+    },
+    {
+      "postId": 1,
+      "userCommented": "퉁퉁이",
+      "comment": "ㄴㅇㄹㄴㅇㄹ",
+      "id": 11
+    },
+    {
+      "postId": 1,
+      "userCommented": "퉁퉁이",
+      "comment": " ㄴㅇㄹㄴㅇㅇㄴㄹ",
+      "id": 12
+    },
+    {
+      "postId": 1,
+      "userCommented": "퉁퉁이",
+      "comment": " ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ",
+      "id": 13
+    },
+    {
+      "postId": 2,
+      "userCommented": "퉁퉁이",
+      "comment": "ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ",
+      "id": 14
+    },
+    {
+      "postId": 2,
+      "userCommented": "퉁퉁이",
+      "comment": " ㄴㅇㄹㄴㅇㄹㄴㅇ",
+      "id": 15
+    },
+    {
+      "postId": 2,
+      "userCommented": "퉁퉁이",
+      "comment": " ㅇㄴㄹㄴㅇㄹㅇㄴㄹㄴㅇㄹㄴㅇ",
+      "id": 16
+    },
+    {
+      "postId": 2,
+      "userCommented": "퉁퉁이",
+      "comment": "하이",
+      "id": 17
+    },
+    {
+      "postId": 2,
+      "userCommented": "퉁퉁이",
+      "comment": "하이2",
+      "id": 18
+    },
+    {
+      "postId": 1,
+      "userCommented": "퉁퉁이",
+      "comment": "하2",
+      "id": 19
+    },
+    {
+      "postId": 2,
+      "userCommented": "퉁퉁이",
+      "comment": "이게 왜 되는 거지?",
+      "id": 20
+    },
+    {
+      "postId": 2,
+      "userCommented": "퉁퉁이",
+      "comment": "안녕하세요",
+      "id": 21
+    },
+    {
+      "postId": 2,
+      "userCommented": "퉁퉁이",
+      "comment": " 게시글 2 번 째 페이지 입니다",
+      "id": 22
+    },
+    {
+      "postId": 1,
+      "userCommented": "퉁퉁이",
+      "comment": "게시글 1 번 째 페이지 입니다",
+      "id": 23
+    },
+    {
+      "postId": 1,
+      "userCommented": "퉁퉁이",
+      "comment": "나는 야 퉁퉁이 ",
+      "id": 24
     }
   ]
 }

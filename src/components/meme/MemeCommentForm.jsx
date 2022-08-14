@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form"
 import { useDispatch } from 'react-redux';
 import { __createComment } from '../../redux/modules/comment';
 
-const MemeCommentForm = ({ comments, setComments }) => {
+const MemeCommentForm = () => {
     const { postId } = useParams();
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const dispatch = useDispatch()
@@ -25,6 +25,7 @@ const MemeCommentForm = ({ comments, setComments }) => {
         dispatch(__createComment(new_comment));        
         reset({ comment: " " })
     }
+    
     const onError = (errors, e) => console.log(errors, e);
 
     return (
