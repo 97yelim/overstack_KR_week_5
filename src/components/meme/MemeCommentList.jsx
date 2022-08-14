@@ -11,7 +11,7 @@ const MemeCommentList = () => {
     const { postId } = useParams();
     const dispatch = useDispatch()
     const comments = useSelector((state) => state.comment.comments)
-    
+    // comment
     useEffect(() => {
         dispatch(__getComments(postId));
     }, [dispatch, postId])
