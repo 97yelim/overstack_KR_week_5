@@ -11,14 +11,12 @@ import { __getPost } from "../../redux/modules/post";
 
 const MemeContents = () => {
     const { postId } = useParams();
-    const navigate = useNavigate();
     const dispatch = useDispatch();
     const post = useSelector((state) => state.post.post);
-    const { id, title, userNickname } = post;
+    const { title, userNickname } = post;
 
     useEffect(() => {
         dispatch(__getPost(postId));
-        console.log(title)
       }, [dispatch, postId]);
 
 

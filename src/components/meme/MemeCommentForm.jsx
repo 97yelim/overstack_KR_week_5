@@ -5,14 +5,13 @@ import { useForm } from "react-hook-form"
 import axios from 'axios';
 
 const MemeCommentForm = () => {
-    const [addcomments, setAddComments] = useState(null);
     const { postId } = useParams();
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
     const black_pattern = /^\s+|\s+$/g;
     const isBlank = (value) => (
         value.replace(black_pattern, '') === "" ? false : true
-      )
+    )
 
     const onSubmit = (data) => {
         const new_comment = {
@@ -20,6 +19,11 @@ const MemeCommentForm = () => {
             userCommented: "퉁퉁이",
             comment: data.comment
         }
+        const postComments = async () => {
+            const response = await axios.post('http://localhost:3001/comments', new_comment);
+        }
+        postComments()
+        reset({ comment: " " })
     }
     const onError = (errors, e) => console.log(errors, e);
 
