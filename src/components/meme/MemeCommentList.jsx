@@ -7,6 +7,7 @@ import { __getComments } from '../../redux/modules/comment';
 
 const MemeCommentList = () => {
     const { postId } = useParams();
+
     const dispatch = useDispatch();
     const comments = useSelector((state) => state.comment.comments)
     const success = useSelector((state) => state.comment.success)
