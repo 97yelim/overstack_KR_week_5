@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import SignIn from '../login/SignIn'; 
-import SignUp from '../login/SignUp';
+import SignIn from './login/SignIn'; 
+import SignUp from './login/SignUp';
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -37,20 +37,22 @@ const CloseBox = styled.div`
 
 const LoginBox = styled.div `
     position: absolute;
-    width: 600px;
-    height: 760px;
+    width: 500px;
     background-color: #fff;
-    border-radius: 40px;
+    border-radius: 30px;
     z-index: 6;
     padding: 40px;
     box-sizing: border-box;
-    
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
     span{
         display: block;
         width: 100%;
         text-align: right;
         font-size: ${(props) => props.theme.fontsizes.subtitle};
         color:${(props) => props.theme.colors.buttonColor};
+        margin-bottom: 30px;
         svg{
             cursor: pointer;
             transition: all .3s;

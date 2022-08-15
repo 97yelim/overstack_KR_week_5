@@ -9,6 +9,7 @@ const colors = {
     iconColor2: "#fff",
     buttonColor:"#AFAFAF",
     buttonColor2:"#000",
+    buttonColor3:"#fff",
     hoverColor:"#FFC011",
     boxColor:"#f8f8fc",
 }
