@@ -42,24 +42,24 @@ export const __getComments = createAsyncThunk(
 
 export const __editComment = createAsyncThunk(
   "comments/__editComment",
-  async(edit_comment, thunkAPI) => {
-    try{
-      const{ comment_id, edit_body } = edit_comment;
+  async (edit_comment, thunkAPI) => {
+    try {
+      const { comment_id, edit_body } = edit_comment;
       const response = await axios.patch(
         `http://localhost:3001/comments/${comment_id}`,
         edit_body
       );
       const edit_id = response.data;
       return thunkAPI.fulfillWithValue(edit_id);
-    } catch(error){
-        return thunkAPI.rejectWithValue(error);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
     }
   }
 )
 
 export const __deleteComment = createAsyncThunk(
   "comments/__deleteComment",
-  async ( comment_id, thunkAPI ) => {
+  async (comment_id, thunkAPI) => {
     try {
       await axios.delete(`http://localhost:3001/comments/${comment_id}`)
       return thunkAPI.fulfillWithValue(comment_id);
@@ -112,7 +112,21 @@ const commentSlice = createSlice({
     [__editComment.rejected]: (state, action) => {
       state.isLoading = false;
       state.error = action.payload;
-  }
+    },
+    [__deleteComment.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [__deleteComment.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      const target = state.comments.findIndex(
+        (comment) => comment.id === action.payload
+      );
+      state.comments.splice(target, 1);
+    },
+    [__deleteComment.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    }
   }
 })
 

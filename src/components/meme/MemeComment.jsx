@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux/es/exports';
-import { __editComment, __getComments } from '../../redux/modules/comment';
+import { __deleteComment, __editComment, __getComments } from '../../redux/modules/comment';
 import { useParams } from 'react-router-dom';
 
 const MemeComment = ({ comment }) => {
@@ -43,7 +43,7 @@ const MemeComment = ({ comment }) => {
     }
 
     const onDelete = (comment_id) => {
-        dispatch()
+        dispatch(__deleteComment(comment_id))
     }
 
     return (

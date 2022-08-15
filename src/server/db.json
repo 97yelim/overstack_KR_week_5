@@ -38,24 +38,6 @@
       "postId": 1,
       "userCommented": "퉁퉁이",
       "comment": "하이루",
-      "id": 6
-    },
-    {
-      "postId": 1,
-      "userCommented": "퉁퉁이",
-      "comment": "안녕안녕",
-      "id": 7
-    },
-    {
-      "postId": 1,
-      "userCommented": "퉁퉁이",
-      "comment": "나는 야 퉁퉁이 ",
-      "id": 8
-    },
-    {
-      "postId": 1,
-      "userCommented": "퉁퉁이",
-      "comment": "하이",
       "id": 9
     },
     {
@@ -71,36 +53,6 @@
       "id": 11
     },
     {
-      "postId": 1,
-      "userCommented": "퉁퉁이",
-      "comment": " ㄴㅇㄹㄴㅇㅇㄴㄹ",
-      "id": 12
-    },
-    {
-      "postId": 1,
-      "userCommented": "퉁퉁이",
-      "comment": " ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ",
-      "id": 13
-    },
-    {
-      "postId": 2,
-      "userCommented": "퉁퉁이",
-      "comment": "ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ",
-      "id": 14
-    },
-    {
-      "postId": 2,
-      "userCommented": "퉁퉁이",
-      "comment": " ㄴㅇㄹㄴㅇㄹㄴㅇ",
-      "id": 15
-    },
-    {
-      "postId": 2,
-      "userCommented": "퉁퉁이",
-      "comment": " ㅇㄴㄹㄴㅇㄹㅇㄴㄹㄴㅇㄹㄴㅇ",
-      "id": 16
-    },
-    {
       "postId": 2,
       "userCommented": "퉁퉁이",
       "comment": "하이",
@@ -111,12 +63,6 @@
       "userCommented": "퉁퉁이",
       "comment": "하이2",
       "id": 18
-    },
-    {
-      "postId": 1,
-      "userCommented": "퉁퉁이",
-      "comment": "하2",
-      "id": 19
     },
     {
       "postId": 2,
@@ -145,86 +91,18 @@
     {
       "postId": 1,
       "userCommented": "퉁퉁이",
-      "comment": "나는 야 퉁퉁이 ",
-      "id": 24
-    },
-    {
-      "postId": 2,
-      "userCommented": "퉁퉁이",
-      "comment": "   ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ",
-      "id": 25
-    },
-    {
-      "postId": 2,
-      "userCommented": "퉁퉁이",
-      "comment": "안녕하세요",
-      "id": 26
-    },
-    {
-      "postId": 2,
-      "userCommented": "퉁퉁이",
-      "comment": "하이",
-      "id": 27
-    },
-    {
-      "postId": 2,
-      "userCommented": "퉁퉁이",
-      "comment": " ㄹㄹㄹㄹㄹ",
-      "id": 28
-    },
-    {
-      "postId": 2,
-      "userCommented": "퉁퉁이",
-      "comment": "하이",
-      "id": 29
-    },
-    {
-      "postId": 2,
-      "userCommented": "퉁퉁이",
-      "comment": " ㅇㄴㄴㅇㅇㄴㅇㄴ",
-      "id": 30
-    },
-    {
-      "postId": 2,
-      "userCommented": "퉁퉁이",
-      "comment": "하이",
-      "id": 31
-    },
-    {
-      "postId": 2,
-      "userCommented": "퉁퉁이",
-      "comment": "ㅇㅇㅇㅇㅇㅇㅇㅇ",
-      "id": 32
-    },
-    {
-      "postId": 1,
-      "userCommented": "퉁퉁이",
-      "comment": "댓글",
-      "id": 33
-    },
-    {
-      "postId": 2,
-      "userCommented": "퉁퉁이",
-      "comment": "이것이 댓글이다",
-      "id": 34
-    },
-    {
-      "postId": 1,
-      "userCommented": "퉁퉁이",
-      "comment": "하이",
-      "id": 35
-    },
-    {
-      "postId": 1,
-      "userCommented": "퉁퉁이",
       "comment": "하이",
       "id": 36
     },
     {
       "postId": 1,
       "userCommented": "퉁퉁이",
-      "comment": " ㅇㅇㅇ",
+      "comment": "안녕하세요",
       "id": 37
     }
-  ]
+  ],
+  "like": {
+    "likeNumber": 0,
+    "isLike": true
+  }
 }
