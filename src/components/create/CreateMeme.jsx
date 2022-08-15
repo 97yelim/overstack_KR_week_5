@@ -1,18 +1,51 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from "react-router-dom";
+import { __createPost } from '../../redux/modules/post';
 import styled from 'styled-components';
 
 const CreateMeme = () => {
     const [files, setFiles] = useState(''); // 파일 프리뷰 state 작성 
-    const onLoadFile = (e) => {
-        const file = e.target.files;
-        console.log(file)
-        setFiles(file)
+    const [title, setTitle] = useState('') //제목 state 
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+    const onChangeHandler = (e) => {
+        const id = e.target.id;
+        const value = e.target.value;
+        console.log(id)
+        if(!value) {
+            return 
+        }else{
+            if(id === 'title') setTitle(value);
+        }
+    };
+
+    const onSubmitHandler = (e) => {
+        e.preventDefault();
+        if (!title){
+            return alert('이봐 친구!! 제목이 비어있어!! 다시 확인해봐!')
+        };
+        const new_post = {
+            title
+        }
+        dispatch(__createPost(new_post));
+        navigate('/main');
     }
+    
+
     useEffect(()=>{
         preview();
 
         return()=>preview();
     });
+
+
+    const onLoadFile = (e) => {
+        const file = e.target.files;
+        console.log(file)
+        setFiles(file)
+    }
 
     const preview = () =>{
         if(!files) return false;
@@ -28,25 +61,26 @@ const CreateMeme = () => {
     
       
     return (
-        <Createform>
+        <Createform  onSubmit={onSubmitHandler}>
             <p>짤방 제목 등록하기</p>
             <div>
                 <label htmlFor="">제목</label>
                 <input 
                     type='text'
-                    name='title'
+                    id = 'title'
                     placeholder='제목을 지어주세요.'
+                    onChange={onChangeHandler}
                     />
             </div>
             <div>
             <label htmlFor="">이미지 선택하기</label>
             <input type="file" id="image" accept='image/*' onChange={onLoadFile} />
            
-            <span>권장 이미지 크기 : 850px * 850px</span>
+            <span>권장 이미지 크기 : 600px * 600px</span>
             <ImgPreview id='imgPreview'></ImgPreview>
 
             </div>
-            <button>게시하기</button>
+            <button onClick={onSubmitHandler}>게시하기</button>
         </Createform>
     );
 };
@@ -73,6 +107,7 @@ const Createform = styled.form`
     }
     button {
         margin-top: 30px;
+        margin-bottom: 100px;
     }
     input{
         margin-bottom: 30px;

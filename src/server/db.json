@@ -1,46 +1,60 @@
 {
-  "posts": 
-  [
+  "posts": [
     {
       "id": 1,
-      "userNickname" : "작성자",
-      "imageUrl" :"/images/cancle.png",
-      "title" : "게시글 제목입니다",
-      "like_num" : 0 
+      "userNickname": "작성자",
+      "imageUrl": "/images/cancle.png",
+      "title": "게시글 제목입니다",
+      "like_num": 0
     },
     {
       "id": 2,
-      "userNickname" : "작성자2",
-      "imageUrl" :"/images/cancle.png",
-      "title" : "게시글 제목입니다2",
-      "like_num" : 0 
+      "userNickname": "작성자2",
+      "imageUrl": "/images/cancle.png",
+      "title": "게시글 제목입니다2",
+      "like_num": 0
+    },
+    {
+      "title": "asdasdas",
+      "id": 3
+    },
+    {
+      "title": "asdasd",
+      "id": 4
+    },
+    {
+      "title": "ㅁㅁㅁㅁㅁㅁ",
+      "id": 5
+    },
+    {
+      "title": "ㅁㄴㅇㄴㄴㅁ",
+      "id": 6
     }
   ],
-  "comments": 
-  [
+  "comments": [
     {
       "id": 1,
-      "userCommented" : "댓글 작성자",
-      "comment" : "댓글",
-      "postId" : 1
+      "userCommented": "댓글 작성자",
+      "comment": "댓글",
+      "postId": 1
     },
     {
       "id": 2,
-      "userCommented" : "댓글 작성자2",
-      "comment" : "댓글2",
-      "postId" : 1
+      "userCommented": "댓글 작성자2",
+      "comment": "댓글2",
+      "postId": 1
     },
     {
       "id": 1,
-      "userCommented" : "댓글 작성자3",
-      "comment" : "댓글3",
-      "postId" : 2
+      "userCommented": "댓글 작성자3",
+      "comment": "댓글3",
+      "postId": 2
     },
     {
       "id": 2,
-      "userCommented" : "댓글 작성자4",
-      "comment" : "댓글4",
-      "postId" : 2
+      "userCommented": "댓글 작성자4",
+      "comment": "댓글4",
+      "postId": 2
     }
   ]
 }

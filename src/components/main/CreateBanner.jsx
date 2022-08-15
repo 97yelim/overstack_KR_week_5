@@ -32,10 +32,19 @@ const MainBanner = styled.div`
     div>div {
         display: flex;
         justify-content: space-between;
+        align-items: center;
         margin-top: 30px;
     }
     p{
         font-size: ${(props) => props.theme.fontsizes.contentstext};
+    }
+    button{
+        background-color: ${(props) => props.theme.colors.buttonColor3};
+        color:${(props) => props.theme.colors.textColor1} ;
+        &:hover{
+            background-color: ${(props) => props.theme.colors.mainColor};
+            color:${(props) => props.theme.colors.textColor2} ;
+        }
     }
     
 `
