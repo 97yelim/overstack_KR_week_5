@@ -12,6 +12,8 @@ const colors = {
     buttonColor3:"#fff",
     hoverColor:"#FFC011",
     boxColor:"#f8f8fc",
+    falseColor: "#f47067",
+    sussessColor:"#57ab5a"
 }
 
 //반응형을 위해 픽셀을 rem으로 컨버팅해주는 함수
@@ -21,7 +23,8 @@ const fontsizes = {
   title :pixelToRem(60),
   subtitle: pixelToRem(35),
   subtitle2:  pixelToRem(24),
-  contentstext: pixelToRem(18)
+  contentstext: pixelToRem(18),
+  alerttext: pixelToRem(16)
 }
 
 const theme = {
