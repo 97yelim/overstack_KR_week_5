@@ -13,6 +13,41 @@
       "imageUrl": "/images/cancle.png",
       "title": "게시글 제목입니다2",
       "like_num": 0
+    },
+    {
+      "id": 3,
+      "userNickname": "작성자3",
+      "imageUrl": "/images/cancle.png",
+      "title": "게시글 제목입니다3",
+      "like_num": 0
+    },
+    {
+      "id": 4,
+      "userNickname": "작성자4",
+      "imageUrl": "/images/cancle.png",
+      "title": "게시글 제목입니다4",
+      "like_num": 0
+    },
+    {
+      "id": 5,
+      "userNickname": "작성자5",
+      "imageUrl": "/images/cancle.png",
+      "title": "게시글 제목입니다5",
+      "like_num": 0
+    },
+    {
+      "id": 6,
+      "userNickname": "작성자6",
+      "imageUrl": "/images/cancle.png",
+      "title": "게시글 제목입니다6",
+      "like_num": 0
+    },
+    {
+      "id": 7,
+      "userNickname": "작성자6",
+      "imageUrl": "/images/cancle.png",
+      "title": "게시글 제목입니다7",
+      "like_num": 0
     }
   ],
   "comments": [
@@ -105,6 +140,12 @@
       "userCommented": "퉁퉁이",
       "comment": "안녕하세요",
       "id": 37
+    },
+    {
+      "postId": 3,
+      "userCommented": "퉁퉁이",
+      "comment": " 안냥",
+      "id": 38
     }
   ],
   "like": {

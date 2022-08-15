@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { useForm } from "react-hook-form"
 import { useDispatch } from 'react-redux';
-import { __createComment, __getComments } from '../../redux/modules/comment';
+import { __createComment } from '../../redux/modules/comment';
 
 const MemeCommentForm = () => {
     const { postId } = useParams();
