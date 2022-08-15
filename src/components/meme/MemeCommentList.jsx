@@ -9,10 +9,12 @@ const MemeCommentList = () => {
     const { postId } = useParams();
     const dispatch = useDispatch();
     const comments = useSelector((state) => state.comment.comments)
+    const success = useSelector((state) => state.comment.success)
 
     useEffect(() => {
         dispatch(__getComments(postId));
-      }, [dispatch, postId]);
+      }, [dispatch, postId, success]);
+
 
     return (
         <div>

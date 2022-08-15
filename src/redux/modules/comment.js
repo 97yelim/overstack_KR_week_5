@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { act } from "react-dom/test-utils";
 
 // initialState
 const initialState = {
@@ -39,6 +40,35 @@ export const __getComments = createAsyncThunk(
   }
 )
 
+export const __editComment = createAsyncThunk(
+  "comments/__editComment",
+  async(edit_comment, thunkAPI) => {
+    try{
+      const{ comment_id, edit_body } = edit_comment;
+      const response = await axios.patch(
+        `http://localhost:3001/comments/${comment_id}`,
+        edit_body
+      );
+      const edit_id = response.data;
+      return thunkAPI.fulfillWithValue(edit_id);
+    } catch(error){
+        return thunkAPI.rejectWithValue(error);
+    }
+  }
+)
+
+export const __deleteComment = createAsyncThunk(
+  "comments/__deleteComment",
+  async ( comment_id, thunkAPI ) => {
+    try {
+      await axios.delete(`http://localhost:3001/comments/${comment_id}`)
+      return thunkAPI.fulfillWithValue(comment_id);
+    } catch (error) {
+
+    }
+  }
+)
+
 
 // createSlice
 const commentSlice = createSlice({
@@ -67,7 +97,22 @@ const commentSlice = createSlice({
     [__getComments.rejected]: (state, action) => {
       state.isLoading = false;
       state.error = action.payload;
-    }
+    },
+    [__editComment.peding]: (state, action) => {
+      state.isLoading = true;
+    },
+    [__editComment.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.success = action.payload.id;
+      const target = state.comments.findIndex(
+        (comment) => comment.id === action.payload.id
+      );
+      state.comments.splice(target, 1, action.payload);
+    },
+    [__editComment.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+  }
   }
 })
 
