@@ -4,22 +4,29 @@ import MemeCommentForm from './MemeCommentForm';
 import MemeCommentList from './MemeCommentList';
 import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from "react";
 import { __getPost } from "../../redux/modules/post";
+import { faThumbsDown } from '@fortawesome/free-regular-svg-icons';
+import { __toggleLike } from '../../redux/modules/like';
 
 const MemeContents = () => {
     const { postId } = useParams();
     const dispatch = useDispatch();
     const post = useSelector((state) => state.post.post);
     const { title, userNickname } = post;
+    const likeNumber = useSelector((state) => state.like.likeNumber)
+    const isLike = useSelector((state) => state.like.isLike)
 
     useEffect(() => {
         dispatch(__getPost(postId));
       }, [dispatch, postId]);
 
-
+    const onisLike = () => {
+        dispatch(__toggleLike(!isLike))
+    }  
+    
     return (
         <div>
             <StMemeHeader>
@@ -30,11 +37,13 @@ const MemeContents = () => {
                 <StTitle>
                     <div>
                         <h1>{title}</h1>
-                        <p><FontAwesomeIcon icon={faThumbsUp} /> 212</p>
+                        {isLike ? (<p><FontAwesomeIcon icon={faThumbsUp} />{likeNumber}</p>)
+                            :(<p><FontAwesomeIcon icon={faThumbsDown} />{likeNumber}</p>)}
                     </div>
                     <div>
                         <p>작성자: {userNickname}</p>
-                        <button><FontAwesomeIcon icon={faThumbsUp}/></button>
+                        {isLike ? (<button onClick={onisLike}><FontAwesomeIcon icon={faThumbsUp} /></button>) 
+                            : (<button onClick={onisLike}><FontAwesomeIcon icon={faThumbsDown} /></button>)}
                     </div>
                 </StTitle>
             </StImgbox>

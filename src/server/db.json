@@ -19,50 +19,90 @@
     {
       "id": 1,
       "userCommented": "댓글 작성자",
-      "comment": "댓글",
-      "postId": 1
+      "comment": "수정완료",
+      "postId": 2
     },
     {
-      "id": 2,
-      "userCommented": "댓글 작성자2",
-      "comment": "댓글2",
-      "postId": 1
-    },
-    {
-      "id": 1,
+      "id": 3,
       "userCommented": "댓글 작성자3",
-      "comment": "댓글3",
+      "comment": "무야호~~~",
       "postId": 2
     },
     {
-      "id": 2,
+      "id": 4,
       "userCommented": "댓글 작성자4",
-      "comment": "댓글4",
+      "comment": "무야호",
       "postId": 2
+    },
+    {
+      "postId": 1,
+      "userCommented": "퉁퉁이",
+      "comment": "하이루",
+      "id": 9
     },
     {
       "postId": 1,
       "userCommented": "퉁퉁이",
       "comment": "안녕하세요",
-      "id": 3
+      "id": 10
     },
     {
       "postId": 1,
       "userCommented": "퉁퉁이",
-      "comment": "나는 야 퉁퉁이 ",
-      "id": 4
+      "comment": "드디어 되는구나",
+      "id": 11
+    },
+    {
+      "postId": 2,
+      "userCommented": "퉁퉁이",
+      "comment": "하이",
+      "id": 17
+    },
+    {
+      "postId": 2,
+      "userCommented": "퉁퉁이",
+      "comment": "하이2",
+      "id": 18
+    },
+    {
+      "postId": 2,
+      "userCommented": "퉁퉁이",
+      "comment": "이게 왜 되는 거지?",
+      "id": 20
+    },
+    {
+      "postId": 2,
+      "userCommented": "퉁퉁이",
+      "comment": "안녕하세요",
+      "id": 21
+    },
+    {
+      "postId": 2,
+      "userCommented": "퉁퉁이",
+      "comment": " 게시글 2 번 째 페이지 입니다",
+      "id": 22
+    },
+    {
+      "postId": 1,
+      "userCommented": "퉁퉁이",
+      "comment": "게시글 1 번 째 페이지 입니다",
+      "id": 23
     },
     {
       "postId": 1,
       "userCommented": "퉁퉁이",
       "comment": "하이",
-      "id": 5
+      "id": 36
     },
     {
       "postId": 1,
       "userCommented": "퉁퉁이",
-      "comment": "하이하이",
-      "id": 6
+      "comment": "안녕하세요",
+      "id": 37
     }
-  ]
+  ],
+  "like": {
+    "likeNumber": 0,
+    "isLike": true
+  }
 }
