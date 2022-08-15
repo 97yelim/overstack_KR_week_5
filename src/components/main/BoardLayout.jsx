@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { __getPosts } from "../../redux/modules/post";
+import { __getPost } from "../../redux/modules/post";
 import BoardContents from './BoardContents';
 
 const BoardLayout = () => {
@@ -12,7 +12,7 @@ const BoardLayout = () => {
     const error = useSelector((state) => state.post.error);
 
     useEffect(() => {
-        dispatch(__getPosts());
+        dispatch(__getPost());
     }, [dispatch]);
 
     const posts = allPosts.map((post) => (
@@ -23,7 +23,7 @@ const BoardLayout = () => {
             title={post.title}
         />
     ))
- 
+
 
     return (
         <div>
