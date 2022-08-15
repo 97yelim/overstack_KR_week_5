@@ -15,7 +15,7 @@ const BoardLayout = () => {
         dispatch(__getPosts());
     }, [dispatch]);
 
-    /* const posts = allPosts.map((post) => (
+    const posts = allPosts.map((post) => (
         <BoardContents
             key={post.id}
             id={post.id}
@@ -23,13 +23,13 @@ const BoardLayout = () => {
             title={post.title}
         />
     ))
- */
+ 
 
     return (
         <div>
             {isLoading ? <p>In Loading...</p> : null}
             {error ? <p>{error.message}</p> : null}
-            {/* {!isLoading && !error ? posts : null} */}
+            {!isLoading && !error ? posts : null}
         </div>
     );
 };
