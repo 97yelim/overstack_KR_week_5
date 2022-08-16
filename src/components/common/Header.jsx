@@ -9,8 +9,9 @@ const Header = (props) => {
     const [modalOpen, setModalOpen] = useState(false)
     const modalClose = () => {
         setModalOpen(!modalOpen)
-
     }
+    
+
     const navigate = useNavigate();
     const onClickHandler = () => {
         navigate("/main");

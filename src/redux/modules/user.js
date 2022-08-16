@@ -13,6 +13,8 @@ export function UserLogOut (user){
     return {type: LOGOUT, user}
 }
 
+
+
 const initialState = {
     user : {nickname: null},
     isLogin : false,
@@ -20,21 +22,27 @@ const initialState = {
 }
 
 const loginDB = (email, password) => {
-    axios
-        .post("http://warmwinter.co.kr/api/member/login",{
-            email,
-            password
+    const userDB = {email,password}
+    return ()=>{
+        axios.post('http://warmwinter.co.kr/api/member/login',userDB)
+        console.log(userDB)
+        .then((response)=>{
+            localStorage.setItem('token', response.data.token)
+            localStorage.setItem('email', response.data.email)
+            localStorage.setItem('password', response.data.password)
+            UserLogIn({
+                email, password
+            })
+            window.alert('로그인 완료')
+            /* window.location.replace("/") */
         })
-        .then((response) => {
-            console.log(response)
-            dispatch(LOGIN({
-                isLogin: true,
-                token: response.data.token,
-            }));
-            setCookie("Authorization", response.data.token);
-            setCookie("nickname", response.data.nickname);
+        .catch((error)=>{
+            alert(error.response.data.alert)
         })
-        .catch (function(error){
-            console.log(error)
-        })
+    }
 }
+
+
+
+
+export default loginDB;
