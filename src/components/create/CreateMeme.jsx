@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import { __createPost } from '../../redux/modules/post';
 import styled from 'styled-components';
+import axios from 'axios';
 
 const CreateMeme = () => {
     const [files, setFiles] = useState(''); // 파일 프리뷰 state 작성 
@@ -41,12 +42,24 @@ const CreateMeme = () => {
     });
 
 
-    const onLoadFile = (e) => {
+    const onLoadFile = async(e) => {
         const file = e.target.files;
-        console.log(file)
         setFiles(file)
-    }
+        if (e.target.files) {
+            const uploadFile = e.target.files[0]
+            const formData = new FormData()
+            formData.append('files', uploadFile)
 
+        await axios({
+            method: 'post',
+            url: 'http://warmwinter.co.kr/api/posts',
+            data: formData,
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            },
+        });
+    }
+    }
     const preview = () =>{
         if(!files) return false;
         const imgEl = document.querySelector('#imgPreview')

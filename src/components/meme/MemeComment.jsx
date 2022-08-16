@@ -61,7 +61,7 @@ const MemeComment = ({ comment, isSelected, handleClick, elementIndex }) => {
                     </div>
                     <div>
                         <div>{comment.comment}</div>
-                        <StButton onClick={() => handleClick(elementIndex)}>{isSelected ? "취소" : "답글"}</StButton>
+                        <StButton onClick={() => handleClick(elementIndex)}>답글</StButton>
                     </div>
                     {isSelected ? <SubCommentView comment={comment}/> : null }
                 </StMemeComment>
