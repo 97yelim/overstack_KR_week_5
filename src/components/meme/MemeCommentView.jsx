@@ -1,9 +1,13 @@
 import React from 'react';
-import MemeContents from './MemeContents';
+import MemeCommentForm from './MemeCommentForm';
+import MemeCommentList from './MemeCommentList';
 
 const MemeCommentView = () => {
     return (
-            <MemeContents/>
+        <>
+            <MemeCommentForm/>
+            <MemeCommentList/>
+        </>
     );
 };
 

@@ -36,6 +36,18 @@ export const __getPost = createAsyncThunk(
     }
   );
 
+  export const __deletePost = createAsyncThunk(
+    "posts/__deletePost",
+    async (postId, thunkAPI) => {
+      try {
+        await axios.delete(`http://localhost:3001/posts/${ postId }`);
+        return thunkAPI.fulfillWithValue({ postId });
+      } catch (error) {
+        return thunkAPI.rejectWithValue(error)
+      }
+    }
+  )
+
   export const __createPost = createAsyncThunk (
     "posts/__createPost",
     async (new_post, thunkAPI) => {
@@ -92,7 +104,18 @@ const postSlice = createSlice({
     [__createPost.rejected]: (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
-    }
+    },
+    [__deletePost.pending]: (state, action) => {
+      state.isLoading = true;
+    },
+    [__deletePost.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.success = action.payload;
+    },
+    [__deletePost.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
   }
 })
 // export const { } = postSlice.actions;

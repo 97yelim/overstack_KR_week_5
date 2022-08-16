@@ -1,114 +1,113 @@
 {
   "posts": [
     {
-      "id": 1,
-      "userNickname": "작성자",
+      "id": 3,
+      "userNickname": "작성자3",
       "imageUrl": "/images/cancle.png",
-      "title": "게시글 제목입니다",
-      "like_num": 0
+      "title": "게시글 제목입니다3",
+      "likeNumber": 0,
+      "isLike": true
     },
     {
-      "id": 2,
-      "userNickname": "작성자2",
+      "id": 5,
+      "userNickname": "작성자5",
       "imageUrl": "/images/cancle.png",
-      "title": "게시글 제목입니다2",
-      "like_num": 0
+      "title": "게시글 제목입니다5",
+      "likeNumber": 0,
+      "isLike": true
     }
   ],
   "comments": [
     {
-      "id": 1,
-      "userCommented": "댓글 작성자",
-      "comment": "대댓글",
-      "postId": 1
-    },
-    {
-      "id": 2,
-      "userCommented": "댓글 작성자2",
-      "comment": "댓글2",
-      "postId": 1
-    },
-    {
-      "id": 3,
-      "userCommented": "댓글 작성자3",
-      "comment": "무야호~~~",
-      "postId": 2
-    },
-    {
-      "id": 4,
-      "userCommented": "댓글 작성자4",
-      "comment": "무야호",
-      "postId": 2
-    },
-    {
-      "postId": 1,
+      "postId": 3,
       "userCommented": "퉁퉁이",
-      "comment": "하이루",
-      "id": 9
+      "comment": "나는 야 퉁퉁이 ",
+      "id": 39
     },
     {
-      "postId": 1,
+      "postId": 3,
       "userCommented": "퉁퉁이",
-      "comment": "안녕하세요",
-      "id": 10
+      "comment": "하이하이",
+      "id": 40
     },
     {
-      "postId": 1,
-      "userCommented": "퉁퉁이",
-      "comment": "드디어 되는구나",
-      "id": 11
-    },
-    {
-      "postId": 2,
+      "postId": 3,
       "userCommented": "퉁퉁이",
       "comment": "하이",
-      "id": 17
+      "id": 41
     },
     {
-      "postId": 2,
-      "userCommented": "퉁퉁이",
-      "comment": "하이2",
-      "id": 18
-    },
-    {
-      "postId": 2,
-      "userCommented": "퉁퉁이",
-      "comment": "이게 왜 되는 거지?",
-      "id": 20
-    },
-    {
-      "postId": 2,
-      "userCommented": "퉁퉁이",
-      "comment": "안녕하세요",
-      "id": 21
-    },
-    {
-      "postId": 2,
-      "userCommented": "퉁퉁이",
-      "comment": " 게시글 2 번 째 페이지 입니다",
-      "id": 22
-    },
-    {
-      "postId": 1,
-      "userCommented": "퉁퉁이",
-      "comment": "게시글 1 번 째 페이지 입니다",
-      "id": 23
-    },
-    {
-      "postId": 1,
+      "postId": 5,
       "userCommented": "퉁퉁이",
       "comment": "하이",
-      "id": 36
+      "id": 42
     },
     {
-      "postId": 1,
+      "postId": 5,
       "userCommented": "퉁퉁이",
-      "comment": "안녕하세요",
-      "id": 37
+      "comment": "방가방가",
+      "id": 43
+    },
+    {
+      "postId": 3,
+      "userCommented": "퉁퉁이",
+      "comment": "하이",
+      "id": 44
     }
   ],
   "like": {
     "likeNumber": 0,
     "isLike": true
-  }
+  },
+  "reply": [
+    {
+      "postId": "3",
+      "userSubCommented": "퉁퉁이",
+      "subComment": "하이",
+      "commentId": 39,
+      "id": 48
+    },
+    {
+      "postId": 3,
+      "userSubCommented": "퉁퉁이",
+      "subComment": "하이하이",
+      "commentId": 39,
+      "id": 49
+    },
+    {
+      "postId": 3,
+      "userSubCommented": "퉁퉁이",
+      "subComment": "하이하이",
+      "commentId": 40,
+      "id": 50
+    },
+    {
+      "postId": 5,
+      "userSubCommented": "퉁퉁이",
+      "subComment": "안녕하슈",
+      "commentId": 42,
+      "id": 51
+    },
+    {
+      "postId": 3,
+      "userSubCommented": "퉁퉁이",
+      "subComment": "하하하하하하하",
+      "commentId": 41,
+      "id": 52
+    },
+    {
+      "postId": 3,
+      "userSubCommented": "퉁퉁이",
+      "subComment": "하이하이",
+      "commentId": 39,
+      "id": 53
+    },
+    {
+      "postId": 3,
+      "userSubCommented": "퉁퉁이",
+      "subComment": "하이하이",
+      "commentId": 39,
+      "id": 54
+    }
+  ]
 }

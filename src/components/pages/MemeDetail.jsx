@@ -1,7 +1,7 @@
 import React from 'react';
-import MemeCommentView from '../meme/MemeCommentView';
 import Header from '../common/Header'
 import Layout from '../common/Layout'
+import MemeContents from '../meme/MemeContents';
 
 
 const MemeDetail = () => {
@@ -9,7 +9,7 @@ const MemeDetail = () => {
         <>
         <Header/>
         <Layout>
-            <MemeCommentView/>
+            <MemeContents/>
         </Layout>
         </>
     );
