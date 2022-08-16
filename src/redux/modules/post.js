@@ -26,10 +26,10 @@ export const __getPost = createAsyncThunk(
     "posts/__getPost",
     async (postId, thunkAPI) => {
       try {
-        const { data } = await axios.get(
+        const response = await axios.get(
           `http://localhost:3001/posts/${postId}`
         );
-        return thunkAPI.fulfillWithValue(data);
+        return thunkAPI.fulfillWithValue(response.data);
       } catch (error) {
         return thunkAPI.rejectWithValue(error);
       }
