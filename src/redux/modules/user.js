@@ -14,7 +14,6 @@ export function UserLogOut (user){
 }
 
 
-
 const initialState = {
     user : {nickname: null},
     isLogin : false,

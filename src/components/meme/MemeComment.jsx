@@ -5,13 +5,13 @@ import { useDispatch } from 'react-redux/es/exports';
 import { __deleteComment, __editComment, __getComments } from '../../redux/modules/comment';
 import { useParams } from 'react-router-dom';
 import SubCommentView from './SubCommentView';
+import { useSelector } from 'react-redux/es/exports';
 
 const MemeComment = ({ comment, isSelected, handleClick, elementIndex }) => {
     const [commentNum, setCommentNum] = useState(-1);
     const dispatch = useDispatch();
     const [comments, setComments] = useState("");
     const { postId } = useParams()
-
 
 
     const black_pattern = /^\s+|\s+$/g;
@@ -47,10 +47,6 @@ const MemeComment = ({ comment, isSelected, handleClick, elementIndex }) => {
     const onDelete = (comment_id) => {
         dispatch(__deleteComment(comment_id))
     }
-
-    // const onToggleHandler = () => {
-    //     setReply(!reply);
-    // }
 
     return (
         <>
