@@ -14,7 +14,6 @@ export const __toggleLike = createAsyncThunk(
     "like/__toggleLike",
     async (isLike, thunkAPI) => {
       try {
-        console.log(isLike)
         const response = await axios.patch(
           "http://localhost:3001/like/",
           {isLike: isLike}

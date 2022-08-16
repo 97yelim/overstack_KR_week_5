@@ -33,9 +33,10 @@ const BoardContents = ({id, userNickname, title}) => {
 const StContentsBox = styled.div`
     display: flex;
     justify-content: space-between;
-    padding: 30px 0px;
+    padding: 30px 10px;
     border-bottom: 1px solid #efefef;
     cursor: pointer;
+    background-color: ${(props) => props.theme.colors.boxColor};
 `
 const StThumbnailBox = styled.div`
     display: flex;

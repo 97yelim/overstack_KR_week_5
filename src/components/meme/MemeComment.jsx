@@ -4,12 +4,14 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux/es/exports';
 import { __deleteComment, __editComment, __getComments } from '../../redux/modules/comment';
 import { useParams } from 'react-router-dom';
+import SubCommentView from './SubCommentView';
 
-const MemeComment = ({ comment }) => {
+const MemeComment = ({ comment, isSelected, handleClick, elementIndex }) => {
     const [commentNum, setCommentNum] = useState(-1);
     const dispatch = useDispatch();
     const [comments, setComments] = useState("");
     const { postId } = useParams()
+
 
 
     const black_pattern = /^\s+|\s+$/g;
@@ -46,6 +48,10 @@ const MemeComment = ({ comment }) => {
         dispatch(__deleteComment(comment_id))
     }
 
+    // const onToggleHandler = () => {
+    //     setReply(!reply);
+    // }
+
     return (
         <>
             {commentNum !== comment.id ? (
@@ -59,8 +65,9 @@ const MemeComment = ({ comment }) => {
                     </div>
                     <div>
                         <div>{comment.comment}</div>
-                        <StButton>답글</StButton>
+                        <StButton onClick={() => handleClick(elementIndex)}>{isSelected ? "취소" : "답글"}</StButton>
                     </div>
+                    {isSelected ? <SubCommentView comment={comment}/> : null }
                 </StMemeComment>
             ) : (
                 <StMemeComment>
@@ -100,13 +107,7 @@ const StButton = styled.button`
     padding: 10px 15px;
     border-radius: 15px;
     border: none;
-    color: ${(props) => props.theme.colors.textColor2};
-    background-color: ${(props) => props.theme.colors.buttonColor};
     margin-left: 10px;
-    &:hover {
-        color: ${(props) => props.theme.colors.textColor1};
-        background-color: ${(props) => props.theme.colors.mainColor};
-    }
 `
 const StInput = styled.input`
     width: 80%;

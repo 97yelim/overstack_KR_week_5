@@ -68,7 +68,6 @@ const StLabel = styled.div`
 
 const StInput = styled.input`
     width: 700px;
-    background-color: #efefef;
     border: none;
     padding: 10px 15px;
     border-radius: 15px;
@@ -80,12 +79,6 @@ const StButton = styled.button`
     padding: 10px 15px;
     border-radius: 15px;
     border: none;
-    color: ${(props) => props.theme.colors.textColor2};
-    background-color: ${(props) => props.theme.colors.buttonColor};
-    &:hover {
-        color: ${(props) => props.theme.colors.textColor1};
-        background-color: ${(props) => props.theme.colors.mainColor};
-    }
 `
 
 
