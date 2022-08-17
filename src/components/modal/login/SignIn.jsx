@@ -3,9 +3,11 @@ import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { useForm } from "react-hook-form";
 import{ __loginDB } from'../../../redux/modules/user';
+import { useNavigate } from "react-router-dom";
 
 const SignIn = ({SignInUpToggle},{modalClose},props) => {
     const dispatch = useDispatch()
+    const navigate = useNavigate();
     const { register, handleSubmit, formState:{errors}} = useForm();
 
     const onValid = () => {
@@ -18,8 +20,10 @@ const SignIn = ({SignInUpToggle},{modalClose},props) => {
     
     const onSubmit =(data) =>{
         dispatch(__loginDB(data))
+        window.alert("환영합니다.")
+        navigate("/")
         modalClose()
-        console.log(data)
+        console.log(modalClose)
     }
 
     return (
