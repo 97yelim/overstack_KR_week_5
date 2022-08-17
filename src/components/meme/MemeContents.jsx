@@ -10,6 +10,7 @@ import { faThumbsDown } from '@fortawesome/free-regular-svg-icons';
 import { __toggleLike } from '../../redux/modules/like';
 import { useNavigate } from 'react-router-dom';
 import MemeCommentView from './MemeCommentView';
+import axios from 'axios';
 
 
 const MemeContents = () => {
@@ -17,16 +18,25 @@ const MemeContents = () => {
     const dispatch = useDispatch();
     const post = useSelector((state) => state.post.post);
     const { title, userNickname } = post;
-    const likeNumber = useSelector((state) => state.like.likeNumber)
+    // const likeNumber = useSelector((state) => state.like.likeNumber)
     const isLike = useSelector((state) => state.like.isLike)
+    const likeNumber = useSelector((state) => state.post.like_num)
     const navigate = useNavigate();
+
+    console.log(likeNumber)
 
     useEffect(() => {
         dispatch(__getPost(postId));
       }, [dispatch, postId]);
 
-    const onisLike = () => {
-        dispatch(__toggleLike(!isLike))
+    const onisLike = async() => {
+        // dispatch(__toggleLike(!isLike))
+        try {
+            const response = await axios.get("http://localhost:3001/like/");
+            const isLike = response.data
+          } catch (error) {
+                console.log(error);
+          }
     }
     
     const onDeleteHandler = () => {
