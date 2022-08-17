@@ -1,4 +1,4 @@
-import React, { useRef, useState  } from 'react';
+import React, { useRef, useState } from 'react';
 import { useForm } from "react-hook-form";
 import styled from 'styled-components';
 import axios from 'axios';
@@ -7,13 +7,14 @@ import axios from 'axios';
 
 const SignUp = ({SignInUpToggle}) => {
 
-    const { register, handleSubmit, formState:{errors}, watch} = useForm();
-    const [email, setEmail] = useState('');
+    const {register, handleSubmit, formState:{errors}, watch} = useForm();
     
-    const onChange =(e)=>{
-        const id = e.target.id;
-        setEmail(e.target.value)
-    }
+    /* console.log(watch("email")) */
+    const [check, setcheck] = useState({
+        emailCheckState : false, 
+        nicknameCheckState: false
+    })
+
 
     const password = useRef();
     password.current =watch("password")
@@ -27,21 +28,64 @@ const SignUp = ({SignInUpToggle}) => {
     }
     
    
+    //이메일 중복 체크  
+    const onEmailCheck = async() => {
+        try {
+            const email = watch("email")
+            const data = await axios.get(`http://warmwinter.co.kr/api/member/idCheck/${email}`);
+            //중복 x = false , 중복 o = true,
+            if(data.data === false){
+                setcheck({
+                    ...check, emailCheckState:true
+                });
+            }else{
+                setcheck({
+                    ...check, emailCheckState:false
+                });
+            };
+        } catch (error){return;}
+    }
+
+    //닉네임 중복 체크 
+    const onNicknameCheck = async()=>{
+        try{
+            const nickname = watch("nickname")
+            const data = await axios.get(`http://warmwinter.co.kr/api/member/nicknameCheck/${nickname}`)
+            if(data.data === false){
+                setcheck({
+                    ...check, nicknameCheckState:true
+                })
+            }else{
+                setcheck({
+                    ...check, nicknameCheckState:false
+                })
+            }
+        }catch(error){return;}
+    }
+
+
+    const isNickCheck = () => (
+        check.nicknameCheckState === true? true : false
+    )
+    const isEmailCheck = () => (
+        check.emailCheckState === true? true : false
+    )
+
+
+
+    console.log('닉네임', check.nicknameCheckState )
+    console.log('이메일', check.emailCheckState )
 
     const onSubmit = async(data) => {
         console.log(data)
-        /* await axios
+        await axios
         .post("http://warmwinter.co.kr/api/member/signup",data,{
             withCredentials: true // 쿠키 cors 통신 설정
         })
         alert('회원가입 되셨습니다 축하합니다~')
-        SignInUpToggle() */
+        SignInUpToggle()
     }
     
-    /* const onoverlap = async(email) => {
-        await axios
-        .get(`http://warmwinter.co.kr/api/member/idCheck/${email}`)
-    } */
     
 
     return (
@@ -50,32 +94,36 @@ const SignUp = ({SignInUpToggle}) => {
             <div>
                 <div>
                     <h2>이메일</h2>
-                    <button /* onClick={onoverlap(email)} */ type='button'>중복확인</button>
+                    <button onClick={onEmailCheck} type='button'>중복확인</button>
                 </div>
                 <input
                     type="text"
-                    id = "email"
-                    onChange={onChange}
+                    name = "email"
                     placeholder='이메일을 적어주세요.'
                     {...register("email",
                         {required: "Email is required", pattern:/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i,
-                        })}
+                        validate: ()=> isEmailCheck(false)}
+                    )}
                 />
                 {errors.email && errors.email.type === "pattern" && <p> 이메일 형식이 아닙니다. </p>}
+                {errors.email && errors.email.type === "validate" && <p> 중복체크 해주세요. </p>}
             </div>
             <div>
                 <div>
                     <h2>닉네임</h2>
-                    <button type='button'>중복확인</button>
+                    <button onClick={onNicknameCheck} type='button'>중복확인</button>
                 </div>
                 <span> 영어, 숫자, 한글을 사용하여 2~8자리로 입력해주세요.</span>
                 <span>초성은 사용 불가합니다.</span>
                 <input
                     type="text" 
-                    {...register("nickname", {required: "Nickname is required", pattern:/^(?=.*[a-z0-9가-힣])[a-z0-9가-힣]{2,8}$/})}
+                    name="nickname"
+                    {...register("nickname", {required: "Nickname is required", pattern:/^(?=.*[a-z0-9가-힣])[a-z0-9가-힣]{2,8}$/,
+                    validate: () => isNickCheck(false)})}
                     placeholder='사용하실 닉네임을 입력해주세요.'
                 />
                 {errors.nickname && errors.nickname.type === "pattern" && <p>올바른 닉네임이 아닙니다.</p>}
+                {errors.nickname && errors.nickname.type === "validate" && <p> 중복체크 해주세요. </p>}
             </div>
             <div>
                 <h2>비밀번호</h2>
