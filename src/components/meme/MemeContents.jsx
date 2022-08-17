@@ -1,47 +1,62 @@
 import React from 'react';
 import styled from 'styled-components';
-import MemeCommentForm from './MemeCommentForm';
-import MemeCommentList from './MemeCommentList';
 import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from "react";
-import { __getPost } from "../../redux/modules/post";
+import { __deletePost, __getPost } from "../../redux/modules/post";
+import { faThumbsDown } from '@fortawesome/free-regular-svg-icons';
+import { __toggleLike } from '../../redux/modules/like';
+import { useNavigate } from 'react-router-dom';
+import MemeCommentView from './MemeCommentView';
+
 
 const MemeContents = () => {
     const { postId } = useParams();
-    const navigate = useNavigate();
     const dispatch = useDispatch();
     const post = useSelector((state) => state.post.post);
-    const { id, title, userNickname } = post;
+    const { title, userNickname } = post;
+    const likeNumber = useSelector((state) => state.like.likeNumber)
+    const isLike = useSelector((state) => state.like.isLike)
+    const navigate = useNavigate();
 
     useEffect(() => {
         dispatch(__getPost(postId));
-        console.log(title)
       }, [dispatch, postId]);
 
-
+    const onisLike = () => {
+        dispatch(__toggleLike(!isLike))
+    }
+    
+    const onDeleteHandler = () => {
+        let answer = window.confirm("정말 지울 거예요??");
+        if (!answer) return;
+        dispatch(__deletePost(postId))
+        navigate("/main")
+    }
+    
     return (
         <div>
             <StMemeHeader>
                 <div>작성날짜 00/00/00</div>
-                <button>삭제하기</button>
+                <button onClick={onDeleteHandler}>삭제하기</button>
             </StMemeHeader>
             <StImgbox>
                 <StTitle>
                     <div>
                         <h1>{title}</h1>
-                        <p><FontAwesomeIcon icon={faThumbsUp} /> 212</p>
+                        {isLike ? (<p><FontAwesomeIcon icon={faThumbsUp} />{likeNumber}</p>)
+                            :(<p><FontAwesomeIcon icon={faThumbsDown} />{likeNumber}</p>)}
                     </div>
                     <div>
                         <p>작성자: {userNickname}</p>
-                        <button><FontAwesomeIcon icon={faThumbsUp}/></button>
+                        {isLike ? (<button onClick={onisLike}><FontAwesomeIcon icon={faThumbsUp} /></button>) 
+                            : (<button onClick={onisLike}><FontAwesomeIcon icon={faThumbsDown} /></button>)}
                     </div>
                 </StTitle>
             </StImgbox>
-            <MemeCommentForm />
-            <MemeCommentList />
+            <MemeCommentView/>
         </div>
     );
 };
@@ -70,17 +85,6 @@ const StTitle = styled.div`
         h1 {
             font-size: ${(props) => props.theme.fontsizes.subtitle}
         }
-        button {
-            transition: all 0.3s;
-            border: none;
-            background-color: ${(props) => props.theme.colors.buttonColor};
-            color: ${(props) => props.theme.colors.textColor2};
-            padding: 10px 30px;
-            border-radius: 15px;
-            &:hover {background-color: #fff;
-                color: ${(props) => props.theme.colors.textColor1};
-            };
-        }
     }
 `
 
@@ -91,13 +95,7 @@ const StMemeHeader = styled.div`
     button {
         transition: all 0.3s;
         border: none;
-        background-color: ${(props) => props.theme.colors.buttonColor};
-        color: ${(props) => props.theme.colors.textColor2};
         padding: 10px 15px;
-        border-radius: 15px;
-        &:hover {background-color: ${(props) => props.theme.colors.hoverColor};
-            color: ${(props) => props.theme.colors.textColor1};
-        };
     }
 `
 

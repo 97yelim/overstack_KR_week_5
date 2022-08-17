@@ -1,18 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { useForm } from "react-hook-form"
-import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { __createComment } from '../../redux/modules/comment';
 
 const MemeCommentForm = () => {
-    const [addcomments, setAddComments] = useState(null);
     const { postId } = useParams();
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
+    const dispatch = useDispatch()
 
     const black_pattern = /^\s+|\s+$/g;
     const isBlank = (value) => (
         value.replace(black_pattern, '') === "" ? false : true
-      )
+    )
 
     const onSubmit = (data) => {
         const new_comment = {
@@ -20,7 +21,11 @@ const MemeCommentForm = () => {
             userCommented: "퉁퉁이",
             comment: data.comment
         }
+
+        dispatch(__createComment(new_comment));        
+        reset({ comment: " " })
     }
+    
     const onError = (errors, e) => console.log(errors, e);
 
     return (
@@ -63,7 +68,6 @@ const StLabel = styled.div`
 
 const StInput = styled.input`
     width: 700px;
-    background-color: #efefef;
     border: none;
     padding: 10px 15px;
     border-radius: 15px;
@@ -75,12 +79,6 @@ const StButton = styled.button`
     padding: 10px 15px;
     border-radius: 15px;
     border: none;
-    color: ${(props) => props.theme.colors.textColor2};
-    background-color: ${(props) => props.theme.colors.buttonColor};
-    &:hover {
-        color: ${(props) => props.theme.colors.textColor1};
-        background-color: ${(props) => props.theme.colors.mainColor};
-    }
 `
 
 

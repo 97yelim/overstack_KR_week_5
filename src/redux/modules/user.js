@@ -1,5 +1,22 @@
 import {createSlice, createAsyncThunk} from "@reduxjs/toolkit"
 import axios from "axios";
+
+
+const LOGIN = "user/LOGIN"
+const LOGOUT = "user/LOGOUT"
+
+export function UserLogIn (user){
+    console.log("UserLogIn");
+    return {type: LOGIN, user}
+}
+
+export function UserLogOut (user){
+    console.log("LOGOUT");
+    return {type: LOGOUT, user}
+}
+
+
+
 const initialState = {
     user: {
         id:null,

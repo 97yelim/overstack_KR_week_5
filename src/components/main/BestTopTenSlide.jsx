@@ -10,6 +10,7 @@ import "swiper/css/pagination";
 // import required modules
 import { FreeMode, Pagination } from "swiper";
 
+
 export default function App() {
   return (
     <>
@@ -32,7 +33,7 @@ export default function App() {
         <SwiperSlide>Slide 7</SwiperSlide>
         <SwiperSlide>Slide 8</SwiperSlide>
         <SwiperSlide>Slide 9</SwiperSlide>
-        <SwiperSlide>Slide </SwiperSlide>
+        <SwiperSlide>Slide 10</SwiperSlide>
       </Swiper>
     </>
   );
