@@ -8,13 +8,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const Login = ({modalClose}, porps) => {
     const [gotoSignUp, setGotoSignUp] = useState(false)
     const SignInUpToggle =() =>{
-        setGotoSignUp(!gotoSignUp)
+            setGotoSignUp(!gotoSignUp)
     }
     return (
         <>
         <LoginBox>
             <span><FontAwesomeIcon onClick={modalClose} icon={faXmark}/></span>
-            {gotoSignUp === false ? <SignIn  SignInUpToggle = {SignInUpToggle}></SignIn> : <SignUp SignInUpToggle = {SignInUpToggle}></SignUp>}
+            {gotoSignUp === false ? <SignIn modalClose={modalClose}  SignInUpToggle = {SignInUpToggle}></SignIn> : <SignUp SignInUpToggle = {SignInUpToggle}></SignUp>}
         </LoginBox>
         <CloseBox  onClick={modalClose}></CloseBox>
         </>

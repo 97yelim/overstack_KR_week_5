@@ -4,15 +4,43 @@ import Layout from './Layout';
 import styled from 'styled-components';
 import Login from '../modal/Login';
 import logo from '../../assets/img/logo.webp'
+import axios from 'axios';
 
 const Header = (props) => {
-    const [modalOpen, setModalOpen] = useState(false)
+    const navigate = useNavigate();
+    const [modalOpen, setModalOpen] = useState(false);
     const modalClose = () => {
         setModalOpen(!modalOpen)
     }
-    
 
-    const navigate = useNavigate();
+    const isLogin = localStorage.getItem('isLogin');
+    const nickname = localStorage.getItem('nickname');
+    
+    //로그아웃 토큰 지우기
+    const logOut = async()=>{
+        const contest = window.confirm("정말 로그아웃 하실건가요?");
+        if(contest === true){
+            const Refreshtoken = localStorage.getItem('refreshToken');
+            const Authorization = localStorage.getItem('authorization');
+            const headers = {
+                'Content-Type': 'application/json',
+                Authorization: `${Authorization}`,
+                Refreshtoken: `${Refreshtoken}`
+            }
+            const url = 'http://warmwinter.co.kr/api/member/logout'
+            axios.post(url, {}, {
+                headers: headers
+                })
+            window.localStorage.clear();
+            navigate("/main")
+            setModalOpen(false)
+            }
+            else if(contest === false){
+                return
+            }
+        }
+    
+       
     const onClickHandler = () => {
         navigate("/main");
       };
@@ -21,11 +49,19 @@ const Header = (props) => {
         <Navigator>
             <Layout>
                 <StHeader>
-                    <img src={logo} onClick={onClickHandler} />
+                    <img src={logo} alt="로고" onClick={onClickHandler} /> 
+                    {isLogin ? 
                     <div>
-                        <p onClick={modalClose}>로그인 ˑ 회원가입</p>
-                        {modalOpen && <Login modalClose={modalClose}></Login>}
+                        <p>{nickname}님 어서오세요.</p>
+                        <button onClick={logOut}>로그아웃</button>
                     </div>
+                     :
+                     <div>
+                         <p onClick={modalClose}>로그인 ˑ 회원가입</p>
+                        {modalOpen && <Login modalClose={modalClose}></Login>}
+                     </div>
+                    }
+                    
                 </StHeader>
             </Layout>
         </Navigator>
