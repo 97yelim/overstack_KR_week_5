@@ -29,8 +29,13 @@ const MemeCommentList = () => {
     return (
         <div>
             {comments.map((comment, index) => 
-                <MemeComment key={index} comment={comment} 
-                    handleClick={handleClick} isSelected={isButtonSelect[index]} elementIndex={index}/>
+                <MemeComment 
+                    key={index} 
+                    comment={comment} 
+                    handleClick={handleClick} 
+                    isSelected={isButtonSelect[index]} 
+                    elementIndex={index}
+                    />
             )}
         </div>
     );

@@ -42,7 +42,7 @@ const MemeContents = () => {
                 <div>작성날짜 00/00/00</div>
                 <button onClick={onDeleteHandler}>삭제하기</button>
             </StMemeHeader>
-            <StImgbox>
+            <StImgbox imgUrl = {post.imageUrl}>
                 <StTitle>
                     <div>
                         <h1>{title}</h1>
@@ -64,10 +64,9 @@ const MemeContents = () => {
 const StImgbox = styled.div`
     width: 600px;
     height: 600px;
-    background-image: "";
+    background-image: ${props => `url(${props.imgUrl})`};
     background-position: center;
     background-size: cover;
-    background-color: ${(props) => props.theme.colors.mainColor};
     border-radius: 20px;
     margin: 0 auto;
     position: relative;

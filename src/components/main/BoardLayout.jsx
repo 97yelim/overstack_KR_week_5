@@ -23,6 +23,7 @@ const BoardLayout = () => {
             userNickname={post.userNickname}
             title={post.title}
             imageUrl={post.imageUrl}
+            comment_num={post.comment_num}
         />
     ))
 

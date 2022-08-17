@@ -15,7 +15,7 @@ export const __createSubComment = createAsyncThunk(
     async (new_SubComment, thunkAPI) => {
         try {
             const response = await axios.post(
-                "http://localhost:3001/reply",
+                "http://warmwinter.co.kr/api/subcomments",
                 new_SubComment
             );
             return thunkAPI.fulfillWithValue(response.data)
@@ -32,7 +32,7 @@ export const __getSubComments = createAsyncThunk(
             const response = await axios.get(
                 // http://warmwinter.co.kr/api/subcomments
                 // "http://localhost:3001/reply"
-                `http://localhost:3001/reply?commentId=${commentId}`
+                `http://warmwinter.co.kr/api/subcomments?commentId=${commentId}`
             );
             return thunkAPI.fulfillWithValue(response.data);
         } catch (error) {
@@ -47,7 +47,7 @@ export const __editSubComment = createAsyncThunk(
         try {
             const { subComment_id, edit_body } = edit_subComment;
             const response = await axios.patch(
-                `http://localhost:3001/reply/${subComment_id}`,
+                `http://warmwinter.co.kr/api/subcomments/${subComment_id}`,
                 edit_body
             );
             const edit_id = response.data;

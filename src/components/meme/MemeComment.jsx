@@ -5,7 +5,6 @@ import { useDispatch } from 'react-redux/es/exports';
 import { __deleteComment, __editComment, __getComments } from '../../redux/modules/comment';
 import { useParams } from 'react-router-dom';
 import SubCommentView from './SubCommentView';
-import { useSelector } from 'react-redux/es/exports';
 
 const MemeComment = ({ comment, isSelected, handleClick, elementIndex }) => {
     const [commentNum, setCommentNum] = useState(-1);
@@ -61,7 +60,7 @@ const MemeComment = ({ comment, isSelected, handleClick, elementIndex }) => {
                     </div>
                     <div>
                         <div>{comment.comment}</div>
-                        <StButton onClick={() => handleClick(elementIndex)}>답글</StButton>
+                        <StButton onClick={() => handleClick(elementIndex)}>답글{comment.subComment_num}</StButton>
                     </div>
                     {isSelected ? <SubCommentView comment={comment}/> : null }
                 </StMemeComment>
