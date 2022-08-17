@@ -1,60 +1,113 @@
 {
   "posts": [
     {
-      "id": 1,
-      "userNickname": "작성자",
+      "id": 3,
+      "userNickname": "작성자3",
       "imageUrl": "/images/cancle.png",
-      "title": "게시글 제목입니다",
-      "like_num": 0
+      "title": "게시글 제목입니다3",
+      "likeNumber": 0,
+      "isLike": true
     },
     {
-      "id": 2,
-      "userNickname": "작성자2",
+      "id": 5,
+      "userNickname": "작성자5",
       "imageUrl": "/images/cancle.png",
-      "title": "게시글 제목입니다2",
-      "like_num": 0
-    },
-    {
-      "title": "asdasdas",
-      "id": 3
-    },
-    {
-      "title": "asdasd",
-      "id": 4
-    },
-    {
-      "title": "ㅁㅁㅁㅁㅁㅁ",
-      "id": 5
-    },
-    {
-      "title": "ㅁㄴㅇㄴㄴㅁ",
-      "id": 6
+      "title": "게시글 제목입니다5",
+      "likeNumber": 0,
+      "isLike": true
     }
   ],
   "comments": [
     {
-      "id": 1,
-      "userCommented": "댓글 작성자",
-      "comment": "댓글",
-      "postId": 1
+      "postId": 3,
+      "userCommented": "퉁퉁이",
+      "comment": "나는 야 퉁퉁이 ",
+      "id": 39
     },
     {
-      "id": 2,
-      "userCommented": "댓글 작성자2",
-      "comment": "댓글2",
-      "postId": 1
+      "postId": 3,
+      "userCommented": "퉁퉁이",
+      "comment": "하이하이",
+      "id": 40
     },
     {
-      "id": 1,
-      "userCommented": "댓글 작성자3",
-      "comment": "댓글3",
-      "postId": 2
+      "postId": 3,
+      "userCommented": "퉁퉁이",
+      "comment": "하이",
+      "id": 41
     },
     {
-      "id": 2,
-      "userCommented": "댓글 작성자4",
-      "comment": "댓글4",
-      "postId": 2
+      "postId": 5,
+      "userCommented": "퉁퉁이",
+      "comment": "하이",
+      "id": 42
+    },
+    {
+      "postId": 5,
+      "userCommented": "퉁퉁이",
+      "comment": "방가방가",
+      "id": 43
+    },
+    {
+      "postId": 3,
+      "userCommented": "퉁퉁이",
+      "comment": "하이",
+      "id": 44
+    }
+  ],
+  "like": {
+    "likeNumber": 0,
+    "isLike": true
+  },
+  "reply": [
+    {
+      "postId": "3",
+      "userSubCommented": "퉁퉁이",
+      "subComment": "하이",
+      "commentId": 39,
+      "id": 48
+    },
+    {
+      "postId": 3,
+      "userSubCommented": "퉁퉁이",
+      "subComment": "하이하이",
+      "commentId": 39,
+      "id": 49
+    },
+    {
+      "postId": 3,
+      "userSubCommented": "퉁퉁이",
+      "subComment": "하이하이",
+      "commentId": 40,
+      "id": 50
+    },
+    {
+      "postId": 5,
+      "userSubCommented": "퉁퉁이",
+      "subComment": "안녕하슈",
+      "commentId": 42,
+      "id": 51
+    },
+    {
+      "postId": 3,
+      "userSubCommented": "퉁퉁이",
+      "subComment": "하하하하하하하",
+      "commentId": 41,
+      "id": 52
+    },
+    {
+      "postId": 3,
+      "userSubCommented": "퉁퉁이",
+      "subComment": "하이하이",
+      "commentId": 39,
+      "id": 53
+    },
+    {
+      "postId": 3,
+      "userSubCommented": "퉁퉁이",
+      "subComment": "하이하이",
+      "commentId": 39,
+      "id": 54
     }
   ]
 }

@@ -1,4 +1,4 @@
-import React, { useRef  } from 'react';
+import React, { useRef, useState  } from 'react';
 import { useForm } from "react-hook-form";
 import styled from 'styled-components';
 import axios from 'axios';
@@ -8,6 +8,12 @@ import axios from 'axios';
 const SignUp = ({SignInUpToggle}) => {
 
     const { register, handleSubmit, formState:{errors}, watch} = useForm();
+    const [email, setEmail] = useState('');
+    
+    const onChange =(e)=>{
+        const id = e.target.id;
+        setEmail(e.target.value)
+    }
 
     const password = useRef();
     password.current =watch("password")
@@ -19,17 +25,23 @@ const SignUp = ({SignInUpToggle}) => {
     const onInvalid = (errors) => {
         console.log(errors)
     }
+    
+   
 
     const onSubmit = async(data) => {
         console.log(data)
-        await axios
+        /* await axios
         .post("http://warmwinter.co.kr/api/member/signup",data,{
             withCredentials: true // 쿠키 cors 통신 설정
         })
         alert('회원가입 되셨습니다 축하합니다~')
-        SignInUpToggle()
+        SignInUpToggle() */
     }
     
+    /* const onoverlap = async(email) => {
+        await axios
+        .get(`http://warmwinter.co.kr/api/member/idCheck/${email}`)
+    } */
     
 
     return (
@@ -38,10 +50,12 @@ const SignUp = ({SignInUpToggle}) => {
             <div>
                 <div>
                     <h2>이메일</h2>
-                    <button type='button'>중복확인</button>
+                    <button /* onClick={onoverlap(email)} */ type='button'>중복확인</button>
                 </div>
                 <input
                     type="text"
+                    id = "email"
+                    onChange={onChange}
                     placeholder='이메일을 적어주세요.'
                     {...register("email",
                         {required: "Email is required", pattern:/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i,
@@ -69,7 +83,7 @@ const SignUp = ({SignInUpToggle}) => {
                 <input 
                     type="password"
                     {...register("password", 
-                        {required: "Password is required",  minLength: 8, pattern:/(?=.*\d{1,50})(?=.*[~`!@#$%\^&*()-+=]{1,50})(?=.*[a-zA-Z]{2,50}).{8,16}$/ })}
+                        {required: "Password is required",  minLength: 8, pattern:/(?=.*\d{1,50})(?=.*[~`!@#$%&*()-+=]{1,50})(?=.*[a-zA-Z]{2,50}).{8,16}$/ })}
                     placeholder='사용하실 비밀번호를 입력해주세요.'
                 />
                 {errors.password && errors.password.type === "minLength" && <p> 비밀번호가 너무 짧습니다. </p>}

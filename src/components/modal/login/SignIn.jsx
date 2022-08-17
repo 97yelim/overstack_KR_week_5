@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { useForm } from "react-hook-form";
-import{UserLogIn} from'../../../redux/modules/user';
+import{ __loginDB } from'../../../redux/modules/user';
 
-const SignIn = ({SignInUpToggle},props) => {
+const SignIn = ({SignInUpToggle},{modalClose},props) => {
     const dispatch = useDispatch()
     const { register, handleSubmit, formState:{errors}} = useForm();
 
@@ -17,29 +17,11 @@ const SignIn = ({SignInUpToggle},props) => {
     }
     
     const onSubmit =(data) =>{
-        dispatch(UserLogIn(data))
+        dispatch(__loginDB(data))
+        modalClose()
+        console.log(data)
     }
 
-    
-
-   /*  const onChangeHandler = (e) =>{
-        const id = e.target.id;
-        const value = e.target.value;
-        
-        if(!value){
-            return
-        }else{
-            if(id === 'email') setEmail(value);
-            else setPassword(value);
-        }
-
-        console.log(email, password)
-        
-    }
-    
-    const onSubmitHandler = () => {
-        dispatch(UserLogIn(email, password))
-    } */
     return (
         <LoginForm onSubmit={handleSubmit((onValid, onInvalid, onSubmit))}>
             <h2>로그인</h2>
@@ -59,7 +41,7 @@ const SignIn = ({SignInUpToggle},props) => {
                 <input 
                     type="password"
                     {...register("password", 
-                        {required: "Password is required", pattern:/(?=.*\d{1,50})(?=.*[~`!@#$%\^&*()-+=]{1,50})(?=.*[a-zA-Z]{2,50}).{8,16}$/ })}
+                        {required: "Password is required", pattern:/(?=.*\d{1,50})(?=.*[~`!@#$%&*()-+=]{1,50})(?=.*[a-zA-Z]{2,50}).{8,16}$/ })}
                     placeholder='비밀번호를 입력해주세요.'
                 />
                 {errors.password && errors.password.type === "pattern" && <p>영문, 숫자, 특수문자 혼합하여 8~20자리로 입력해주세요. </p>}
