@@ -30,6 +30,8 @@ export const __getComments = createAsyncThunk(
   "posts/__getComments",
   async (postId, thunkAPI) => {
     try {
+      //http://warmwinter.co.kr/api/comments
+      //http://localhost:3001/comments?postId=${postId}
       const response = await axios.get(
         `http://localhost:3001/comments?postId=${postId}`
       );

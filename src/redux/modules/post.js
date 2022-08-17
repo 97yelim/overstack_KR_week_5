@@ -14,6 +14,8 @@ export const __getPosts = createAsyncThunk(
     "posts/__getPosts",
     async (args, thunkAPI) => {
         try {
+            //http://localhost:3001/posts
+            //http://warmwinter.co.kr/api/posts
             const response = await axios.get("http://localhost:3001/posts");
             return thunkAPI.fulfillWithValue(response.data);
         } catch (error) {
@@ -54,7 +56,7 @@ export const __getPost = createAsyncThunk(
         try {
             console.log(new_post);
             const response = await axios.post(
-                "http://warmwinter.co.kr/api/posts",
+                "http://localhost:3001/posts",
                 new_post
             );
             const new_post_id = response.data.id;

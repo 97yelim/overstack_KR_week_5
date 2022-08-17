@@ -1,97 +1,93 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
-import { __createPost } from '../../redux/modules/post';
 import styled from 'styled-components';
 import axios from 'axios';
 
 const CreateMeme = () => {
     const [files, setFiles] = useState(''); // 파일 프리뷰 state 작성 
     const [title, setTitle] = useState('') //제목 state 
-    const dispatch = useDispatch()
     const navigate = useNavigate()
 
     const onChangeHandler = (e) => {
         const id = e.target.id;
         const value = e.target.value;
-        console.log(id)
-        if(!value) {
-            return 
-        }else{
-            if(id === 'title') setTitle(value);
+        if (!value) {
+            return
+        } else {
+            if (id === 'title') setTitle(value);
         }
     };
 
-    const onSubmitHandler = (e) => {
+    const onSubmitHandler = async (e) => {
         e.preventDefault();
-        if (!title){
+        if (!title) {
             return alert('이봐 친구!! 제목이 비어있어!! 다시 확인해봐!')
         };
-        const new_post = {
-            title
+        const form = document.getElementById('form');
+
+        const formData = new FormData(form);
+
+        console.log([...formData])
+
+        try {
+            const res = await axios.post('http://localhost:3001/posts', formData)
+            console.log(res)
+        } catch (err) {
+            console.log(err);
         }
-        dispatch(__createPost(new_post));
+
         navigate('/main');
     }
-    
 
-    useEffect(()=>{
+
+    useEffect(() => {
         preview();
 
-        return()=>preview();
+        return () => preview();
     });
 
 
-    const onLoadFile = async(e) => {
-        const file = e.target.files;
-        setFiles(file)
-        if (e.target.files) {
-            const uploadFile = e.target.files[0]
-            const formData = new FormData()
-            formData.append('files', uploadFile)
+    const onLoadFile = (e) => {
+        setFiles(e.target.files[0]);
 
-        await axios({
-            method: 'post',
-            url: 'http://warmwinter.co.kr/api/posts',
-            data: formData,
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            },
-        });
     }
-    }
-    const preview = () =>{
-        if(!files) return false;
+    const preview = () => {
+        if (!files) return false;
         const imgEl = document.querySelector('#imgPreview')
         const reader = new FileReader();
 
         reader.onload = () =>
-            (imgEl.style.backgroundImage = `url(${reader.result})`,
-            imgEl.style.backgroundSize = "cover");
-        reader.readAsDataURL(files[0])
-        console.log(reader)
+        (imgEl.style.backgroundImage = `url(${reader.result})`,
+            imgEl.style.backgroundSize = "cover",
+            imgEl.style.backgroundPosition = "center");
+        reader.readAsDataURL(files)
     }
-    
-      
+
+
     return (
-        <Createform  onSubmit={onSubmitHandler}>
+        <Createform onSubmit={onSubmitHandler} id="form">
             <p>짤방 제목 등록하기</p>
             <div>
-                <label htmlFor="">제목</label>
-                <input 
+                <label htmlFor="title">제목</label>
+                <input
                     type='text'
-                    id = 'title'
+                    id='title'
+                    name='title'
                     placeholder='제목을 지어주세요.'
                     onChange={onChangeHandler}
-                    />
+                />
             </div>
             <div>
-            <label htmlFor="">이미지 선택하기</label>
-            <input type="file" id="image" accept='image/*' onChange={onLoadFile} />
-           
-            <span>권장 이미지 크기 : 600px * 600px</span>
-            <ImgPreview id='imgPreview'></ImgPreview>
-
+                <label htmlFor="file">이미지 선택하기</label>
+                <input 
+                    type="file" 
+                    id="image" 
+                    name='file' 
+                    accept='image/*' 
+                    onChange={onLoadFile} 
+                />
+                <span>권장 이미지 크기 : 600px * 600px</span>
+                <ImgPreview id='imgPreview'></ImgPreview>
             </div>
             <button onClick={onSubmitHandler}>게시하기</button>
         </Createform>

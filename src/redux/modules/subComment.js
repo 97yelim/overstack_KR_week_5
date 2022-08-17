@@ -30,6 +30,8 @@ export const __getSubComments = createAsyncThunk(
     async (commentId, thunkAPI) => {
         try {
             const response = await axios.get(
+                // http://warmwinter.co.kr/api/subcomments
+                // "http://localhost:3001/reply"
                 `http://localhost:3001/reply?commentId=${commentId}`
             );
             return thunkAPI.fulfillWithValue(response.data);
