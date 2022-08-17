@@ -25,7 +25,6 @@ export const __loginDB  = createAsyncThunk(
                 localStorage.setItem('refreshToken', response.headers.refreshtoken);
                 localStorage.setItem('nickname', response.data.data.nickname);
                 localStorage.setItem('isLogin', true);
-                window.alert("환영합니다.")
                 return thunkAPI.fulfillWithValue(response.data.data)
             }
         }
