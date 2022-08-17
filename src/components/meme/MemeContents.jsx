@@ -75,6 +75,7 @@ const StTitle = styled.div`
     position: absolute;
     bottom: 0px;
     padding: 20px;
+    color: #fff;
     div {
         width: 560px;
         display: flex;
