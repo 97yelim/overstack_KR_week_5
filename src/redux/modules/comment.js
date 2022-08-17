@@ -16,7 +16,7 @@ export const __createComment = createAsyncThunk(
   async (new_comment, thunkAPI) => {
     try {
       const response = await axios.post(
-        "http://localhost:3001/comments",
+        "http://warmwinter.co.kr/api/comments",
         new_comment
       );
       return thunkAPI.fulfillWithValue(response.data)
@@ -30,8 +30,10 @@ export const __getComments = createAsyncThunk(
   "posts/__getComments",
   async (postId, thunkAPI) => {
     try {
+      //http://warmwinter.co.kr/api/comments
+      //http://localhost:3001/comments?postId=${postId}
       const response = await axios.get(
-        `http://localhost:3001/comments?postId=${postId}`
+        `http://warmwinter.co.kr/api/comments?postId=${postId}`
       );
       return thunkAPI.fulfillWithValue(response.data);
     } catch (error) {
@@ -46,7 +48,7 @@ export const __editComment = createAsyncThunk(
     try {
       const { comment_id, edit_body } = edit_comment;
       const response = await axios.patch(
-        `http://localhost:3001/comments/${comment_id}`,
+        `http://warmwinter.co.kr/api/comments/${comment_id}`,
         edit_body
       );
       const edit_id = response.data;
@@ -61,7 +63,7 @@ export const __deleteComment = createAsyncThunk(
   "comments/__deleteComment",
   async (comment_id, thunkAPI) => {
     try {
-      await axios.delete(`http://localhost:3001/comments/${comment_id}`)
+      await axios.delete(`http://warmwinter.co.kr/api/comments/${comment_id}`)
       return thunkAPI.fulfillWithValue(comment_id);
     } catch (error) {
 

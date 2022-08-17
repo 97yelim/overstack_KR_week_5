@@ -5,16 +5,16 @@
       "userNickname": "작성자3",
       "imageUrl": "/images/cancle.png",
       "title": "게시글 제목입니다3",
-      "likeNumber": 0,
-      "isLike": true
+      "like_num": 0,
+      "comment_num": 0
     },
     {
       "id": 5,
       "userNickname": "작성자5",
       "imageUrl": "/images/cancle.png",
       "title": "게시글 제목입니다5",
-      "likeNumber": 0,
-      "isLike": true
+      "like_num": 0,
+      "comment_num": 0
     }
   ],
   "comments": [
@@ -108,6 +108,20 @@
       "subComment": "하이하이",
       "commentId": 39,
       "id": 54
+    },
+    {
+      "postId": 15,
+      "userSubCommented": "퉁퉁이",
+      "subComment": " 하이",
+      "commentId": 45,
+      "id": 55
+    },
+    {
+      "postId": 15,
+      "userSubCommented": "퉁퉁이",
+      "subComment": " 하이",
+      "commentId": 45,
+      "id": 56
     }
   ]
 }

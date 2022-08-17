@@ -9,10 +9,10 @@ const BoardLayout = () => {
 
     const allPosts = useSelector((state) => state.post.posts);
     const isLoading = useSelector((state) => state.post.isLoading);
-    const success = useSelector((state) => state.post.success);
     const error = useSelector((state) => state.post.error);
 
     useEffect(() => {
+        console.log(allPosts)
         dispatch(__getPosts());
     }, [dispatch]);
 
@@ -22,6 +22,7 @@ const BoardLayout = () => {
             id={post.id}
             userNickname={post.userNickname}
             title={post.title}
+            imageUrl={post.imageUrl}
         />
     ))
 
