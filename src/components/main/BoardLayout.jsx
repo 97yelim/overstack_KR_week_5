@@ -22,6 +22,7 @@ const BoardLayout = () => {
             id={post.id}
             userNickname={post.userNickname}
             title={post.title}
+            imageUrl={post.imageUrl}
         />
     ))
 

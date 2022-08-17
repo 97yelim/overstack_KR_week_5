@@ -16,7 +16,7 @@ export const __getPosts = createAsyncThunk(
         try {
             //http://localhost:3001/posts
             //http://warmwinter.co.kr/api/posts
-            const response = await axios.get("http://localhost:3001/posts");
+            const response = await axios.get("http://warmwinter.co.kr/api/posts");
             return thunkAPI.fulfillWithValue(response.data);
         } catch (error) {
             return thunkAPI.rejectWithValue(error);
@@ -29,7 +29,7 @@ export const __getPost = createAsyncThunk(
     async (postId, thunkAPI) => {
       try {
         const response = await axios.get(
-          `http://localhost:3001/posts/${postId}`
+          `http://warmwinter.co.kr/api/posts/${postId}`
         );
         return thunkAPI.fulfillWithValue(response.data);
       } catch (error) {
@@ -42,30 +42,13 @@ export const __getPost = createAsyncThunk(
     "posts/__deletePost",
     async (postId, thunkAPI) => {
       try {
-        await axios.delete(`http://localhost:3001/posts/${ postId }`);
+        await axios.delete(`http://warmwinter.co.kr/api/posts/${ postId }`);
         return thunkAPI.fulfillWithValue({ postId });
       } catch (error) {
         return thunkAPI.rejectWithValue(error)
       }
     }
   )
-
-  export const __createPost = createAsyncThunk (
-    "posts/__createPost",
-    async (new_post, thunkAPI) => {
-        try {
-            console.log(new_post);
-            const response = await axios.post(
-                "http://localhost:3001/posts",
-                new_post
-            );
-            const new_post_id = response.data.id;
-            return thunkAPI.fulfillWithValue(new_post_id);
-        } catch (error) {
-            return thunkAPI.rejectWithValue(error);
-        }
-    }
-  );
 
 
 // createSlice
@@ -94,17 +77,6 @@ const postSlice = createSlice({
     },
     [__getPost.rejected]: (state, action) => {
         state.isLoading = true;
-        state.error = action.payload;
-    },
-    [__createPost.pending]: (state, action) => {
-        state.isLoading = true;
-    },
-    [__createPost.fulfilled]: (state, action) =>{
-        state.isLoading = false;
-        state.success = action.payload;
-    },
-    [__createPost.rejected]: (state, action) => {
-        state.isLoading = false;
         state.error = action.payload;
     },
     [__deletePost.pending]: (state, action) => {
