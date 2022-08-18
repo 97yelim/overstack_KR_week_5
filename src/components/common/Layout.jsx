@@ -12,6 +12,6 @@ const Layout = (props) => {
 export default Layout;
 
 const ContentsWrap = styled.div`
-    width: 1200px;
+    max-width: 1200px;
     margin: 0 auto;
 `

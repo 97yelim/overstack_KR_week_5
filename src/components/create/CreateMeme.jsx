@@ -89,7 +89,7 @@ const CreateMeme = () => {
                     accept='image/*'
                     onChange={onLoadFile}
                 />
-                <span>권장 이미지 크기 : 600px * 600px</span>
+                <p>권장 이미지 크기 : 600px * 600px</p>
                 <ImgPreview id='imgPreview'></ImgPreview>
             </div>
             <button>게시하기</button>
@@ -125,8 +125,17 @@ const Createform = styled.form`
         margin-bottom: 30px;
     }
     div > p {
-        color: ${(props) => props.theme.colors.subColor};
+        color:${(props) => props.theme.colors.subColor2};
+        font-size: 14px;
+        line-height: 50px;
     }
+    @media screen and (max-width: 600px) {
+        padding: 0 30px;
+        input {
+            width: 80%;
+        }
+    }
+
 `
 
 const ImgPreview = styled.div`
@@ -134,4 +143,7 @@ const ImgPreview = styled.div`
     height: 600px;
     background-color:${(props) => props.theme.colors.boxColor};
     border-radius: 40px;
+    @media screen and (max-width: 600px){
+        width: 80%;
+    }
 `

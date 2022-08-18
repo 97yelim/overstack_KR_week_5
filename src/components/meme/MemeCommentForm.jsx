@@ -58,6 +58,9 @@ const StMemeCommentForm = styled.form`
             color: red;
         }
     }
+    @media screen and (max-width: 600px) {
+        padding: 30px 20px;
+    }
 `
 const StLabel = styled.div`
     display: block;
@@ -71,6 +74,10 @@ const StInput = styled.input`
     padding: 10px 15px;
     border-radius: 15px;
     margin-bottom: 10px;
+    @media screen and (max-width: 600px) {
+        width: 400px;
+        margin: 0;
+    }
 `
 
 const StButton = styled.button`

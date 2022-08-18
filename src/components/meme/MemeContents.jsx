@@ -21,8 +21,6 @@ const MemeContents = () => {
     const likeNumber = useSelector((state) => state.post.post.like_num)
     const navigate = useNavigate();
 
-    console.log(isLike)
-
     useEffect(() => {
         dispatch(__getPost(postId));
       }, [dispatch, postId, isLike]);
@@ -40,7 +38,7 @@ const MemeContents = () => {
     
     return (
         <div>
-            <StMemeHeader>
+            <StMemeHeader  loginUerNickname={loginUerNickname} userNickname={userNickname}>
                 <div>작성날짜 00/00/00</div>
                 <button onClick={onDeleteHandler}>삭제하기</button>
             </StMemeHeader>
@@ -66,17 +64,22 @@ const MemeContents = () => {
 const StImgbox = styled.div`
     width: 600px;
     height: 600px;
-    background-image: ${props => `url(${props.imgUrl})`};
+
+    background:linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 40%, rgba(0,0,0,0) 100%), ${props => `url(${props.imgUrl})`};
     background-position: center;
     background-size: cover;
     border-radius: 20px;
-    margin: 0 auto;
+    margin: 30px auto 130px;
     position: relative;
+    @media screen and (max-width: 600px){
+        width: 90%;
+    }
 `
+
 const StTitle = styled.div`
     position: absolute;
     bottom: 0px;
-    padding: 20px;
+    padding: 25px;
     color: #fff;
     div {
         width: 560px;
@@ -87,6 +90,20 @@ const StTitle = styled.div`
         h1 {
             font-size: ${(props) => props.theme.fontsizes.subtitle}
         }
+        >button {
+            background-color: #fff;
+            color: #000;
+            &:hover{
+                background-color: ${(props) => props.theme.colors.hoverColor};
+                color: #fff
+            }
+        }
+    }
+    @media screen and (max-width: 600px){
+        width: 90%;
+        div{
+            width: 100%;
+        }
     }
 `
 
@@ -94,10 +111,15 @@ const StMemeHeader = styled.div`
     display: flex;
     justify-content: space-between;
     padding: 10px;
+    margin: 70px 0;
     button {
+        display : ${props => `${props.userNickname}` === `${props.loginUerNickname}` ? `block` : `none`};
         transition: all 0.3s;
         border: none;
         padding: 10px 15px;
+    }
+    @media screen and (max-width: 600px){
+        padding: 10px 30px;
     }
 `
 

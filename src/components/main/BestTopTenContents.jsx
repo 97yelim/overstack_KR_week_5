@@ -21,9 +21,9 @@ export default BestTopTenContents;
 
 const StSlide = styled.div`
   height: 300px;
-  background-image : ${props => `url(${props.bestpostUrl})`};
+
+  background : linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 40%, rgba(0,0,0,0) 100%), ${props => `url(${props.bestpostUrl})`};
   color: #fff;
-  background-color: green;
   background-position: center;
   background-size: cover;
   border-radius: 15px;
@@ -31,10 +31,12 @@ const StSlide = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: end;
-  padding: 10px;
+  padding: 20px;
   h3 {
-    font-size: ${(props) => props.theme.fontsizes.subtitle};
+    font-size: ${(props) => props.theme.fontsizes.subtitle2};
     margin-bottom: 10px;
+    word-spacing: 10px;
+    letter-spacing: 2px;
   }
   div {
     display: flex;

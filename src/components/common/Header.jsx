@@ -29,7 +29,7 @@ const Header = (props) => {
             }
             const url = 'http://warmwinter.co.kr/api/member/logout'
             axios.post(url, {}, {
-                headers: headers
+                headers : headers
                 })
             window.localStorage.clear();
             navigate("/main")
@@ -51,10 +51,10 @@ const Header = (props) => {
                 <StHeader>
                     <img src={logo} alt="로고" onClick={onClickHandler} /> 
                     {isLogin ? 
-                    <div>
+                    <LoginDiv>
                         <p>{nickname}님 어서오세요.</p>
                         <button onClick={logOut}>로그아웃</button>
-                    </div>
+                    </LoginDiv>
                      :
                      <div>
                          <p onClick={modalClose}>로그인 ˑ 회원가입</p>
@@ -91,6 +91,18 @@ const StHeader = styled.div`
         height: 80px;
         cursor: pointer;
         margin: 10px 0;
+    }
+    @media screen and (max-width: 600px) {
+        padding: 10px 30px;
+    }
+`
+
+
+const LoginDiv = styled.div`
+    display: flex;
+    align-items: center;
+    >p {
+        margin-right: 20px;
     }
 `
 

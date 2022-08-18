@@ -24,11 +24,12 @@ export default CreateBanner;
 const MainBanner = styled.div`
     width: 100%;
     font-family: 'SUIT-SemiBold';
-    background-color: ${(props) => props.theme.colors.subColor};
+    background-image: linear-gradient(to left, #9795f0 0%, #fbc8d4 100%);
     font-size: ${(props) => props.theme.fontsizes.subtitle};
     color:${(props) => props.theme.colors.textColor2};
     padding: 40px 0;
     box-sizing: border-box;
+    margin: 100px 0;
     div>div {
         display: flex;
         justify-content: space-between;
@@ -46,5 +47,10 @@ const MainBanner = styled.div`
             color:${(props) => props.theme.colors.textColor2} ;
         }
     }
-    
+    @media screen and (max-width: 600px) {
+        padding: 40px 30px;
+        p{
+            width: 75%;
+        }
+    }
 `

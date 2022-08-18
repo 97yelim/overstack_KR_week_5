@@ -63,11 +63,19 @@ const StSubCommentForm = styled.form`
             color: red;
         }
     }
+    @media screen and (max-width: 600px){
+        width: 90%;
+    }
 `
 
 const StInput = styled.input`
     width: 700px;
     margin-bottom: 20px;
+    @media screen and (max-width: 800px){
+        width: 100%;
+        align-items: center;
+        margin: 0;
+    }
 `
 
 const StButton = styled.button`

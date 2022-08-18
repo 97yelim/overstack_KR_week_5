@@ -11,9 +11,6 @@ const MemeComment = ({ comment, isSelected, handleClick, elementIndex }) => {
     const dispatch = useDispatch();
     const [comments, setComments] = useState("");
     const { postId } = useParams()
-
-    console.log(comment)
-
     const black_pattern = /^\s+|\s+$/g;
 
     const onChangeHandler = (e) => {
@@ -33,7 +30,10 @@ const MemeComment = ({ comment, isSelected, handleClick, elementIndex }) => {
         const edit_comment = {
             comment_id,
             edit_body: {
-                contents: comments,
+                postId: parseInt(postId),
+                comment: comments,
+                userCommented: comment.username,
+                commentOwner :comment.commentOwner
             }
         }
         dispatch(__editComment(edit_comment));
@@ -41,25 +41,26 @@ const MemeComment = ({ comment, isSelected, handleClick, elementIndex }) => {
         setComments("");
         dispatch(__getComments(postId))
     }
-
+    const commentOwner = comment.commentOwner
     const onDelete = (comment_id) => {
         dispatch(__deleteComment(comment_id))
     }
 
     return (
+
         <>
             {commentNum !== comment.id ? (
                 <StMemeComment>
                     <div>
                         <div>{comment.userCommented}</div>
                         <div>
-                            <StButton onClick={() => setCommentNum(comment.id)}>수정</StButton>
-                            <StButton onClick={() => onDelete(comment.id)}>삭제</StButton>
+                            <StButton commentOwner={commentOwner} onClick={() => setCommentNum(comment.id)}>수정</StButton>
+                            <StButton  commentOwner={commentOwner} onClick={() => onDelete(comment.id)}>삭제</StButton>
                         </div>
                     </div>
                     <div>
                         <div>{comment.comment}</div>
-                        <StButton onClick={() => handleClick(elementIndex)}>답글{comment.subComment_num}</StButton>
+                        <SubButton onClick={() => handleClick(elementIndex)}>답글{comment.subComment_num}</SubButton>
                     </div>
                     {isSelected ? <SubCommentView comment={comment}/> : null }
                 </StMemeComment>
@@ -97,6 +98,15 @@ const StMemeComment = styled.div`
 `
 
 const StButton = styled.button`
+    transition: all 0.3s;
+    padding: 10px 15px;
+    border-radius: 15px;
+    border: none;
+    margin-left: 10px;
+    display: ${props => `${props.commentOwner}` ? 'none' : 'block'};
+`
+
+const SubButton = styled.button`
     transition: all 0.3s;
     padding: 10px 15px;
     border-radius: 15px;

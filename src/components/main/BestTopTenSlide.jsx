@@ -31,6 +31,7 @@ export default function App() {
 
   return (
     <>
+      <StSubTitle>#자랑스러운 우수 수강생 작품들 🏆</StSubTitle>
       <Swiper
         slidesPerView={3}
         spaceBetween={30}
@@ -48,3 +49,10 @@ export default function App() {
     </>
   );
 }
+
+
+const StSubTitle = styled.h2`
+    font-size: ${(props) => props.theme.fontsizes.subtitle};
+    color: ${(props) => props.theme.colors.textColor1};
+    padding: 100px 0px 30px;
+  `

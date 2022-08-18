@@ -36,12 +36,14 @@ const SubComment = ({ subComment }) => {
                 contents: subComments,
                 // userSubCommented: "퉁퉁이",
                 // commentId: subComment.commentId
+                subCommentOwner :subComment.subCommentOwner
             }
         }
         dispatch(__editSubComment(edit_subComment));
         setSubCommentNum(-1);
         setSubComments("");
     }
+    const subCommentOwner = subComment.subCommentOwner
 
     const onDelete = (subComment_id) => {
         console.log(subComment.id)
@@ -55,7 +57,7 @@ const SubComment = ({ subComment }) => {
                     <div>
                         <div>{subComment.userSubCommented}</div>
                         <div>
-                            <StButton onClick={() => setSubCommentNum(subComment.id)}>수정</StButton>
+                            <StButton subCommentOwner={subCommentOwner} onClick={() => setSubCommentNum(subComment.id)}>수정</StButton>
                             <StButton onClick={() => onDelete(subComment.id)}>삭제</StButton>
                         </div>
                     </div>
@@ -103,6 +105,7 @@ const StButton = styled.button`
     border: none;
     margin-left: 10px;
     background-color: #cdcdcd;
+    display: ${props => `${props.subCommentOwner}` ? 'none' : 'block'};
 `
 const StInput = styled.input`
     width: 80%;

@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { __getComments } from '../../redux/modules/comment';
 import { useState } from 'react';
-
+import styled from "styled-components";
 const MemeCommentList = () => {
     const { postId } = useParams();
 
@@ -27,7 +27,7 @@ const MemeCommentList = () => {
 
 
     return (
-        <div>
+        <CommentListDiv>
             {comments.map((comment, index) => 
                 <MemeComment 
                     key={index} 
@@ -37,8 +37,15 @@ const MemeCommentList = () => {
                     elementIndex={index}
                     />
             )}
-        </div>
+        </CommentListDiv>
     );
 };
+
+
+const CommentListDiv = styled.div`
+    @media screen and (max-width: 600px) {
+        padding: 0 30px;
+    }
+`
 
 export default MemeCommentList;
