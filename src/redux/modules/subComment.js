@@ -14,9 +14,15 @@ export const __createSubComment = createAsyncThunk(
     "reply/__createSubComment",
     async (new_SubComment, thunkAPI) => {
         try {
+            const Refreshtoken = localStorage.getItem('refreshToken');
+            const Authorization = localStorage.getItem('authorization');
+            const headers = {
+              'Content-Type': 'application/json',
+              Authorization: `${Authorization}`,
+              Refreshtoken: `${Refreshtoken}`
+            }
             const response = await axios.post(
-                "http://warmwinter.co.kr/api/subcomments",
-                new_SubComment
+                "http://warmwinter.co.kr/api/subcomments",new_SubComment,{headers: headers}
             );
             return thunkAPI.fulfillWithValue(response.data)
         } catch (error) {
@@ -29,10 +35,15 @@ export const __getSubComments = createAsyncThunk(
     "reply/__getSubComments",
     async (commentId, thunkAPI) => {
         try {
+            const Refreshtoken = localStorage.getItem('refreshToken');
+            const Authorization = localStorage.getItem('authorization');
+            const headers = {
+              'Content-Type': 'application/json',
+              Authorization: `${Authorization}`,
+              Refreshtoken: `${Refreshtoken}`
+            }
             const response = await axios.get(
-                // http://warmwinter.co.kr/api/subcomments
-                // "http://localhost:3001/reply"
-                `http://warmwinter.co.kr/api/subcomments?commentId=${commentId}`
+                `http://warmwinter.co.kr/api/subcomments?commentId=${commentId}`,{},{headers: headers}
             );
             return thunkAPI.fulfillWithValue(response.data);
         } catch (error) {
@@ -45,10 +56,16 @@ export const __editSubComment = createAsyncThunk(
     "reply/__editSubComment",
     async (edit_subComment, thunkAPI) => {
         try {
+            const Refreshtoken = localStorage.getItem('refreshToken');
+            const Authorization = localStorage.getItem('authorization');
+            const headers = {
+              'Content-Type': 'application/json',
+              Authorization: `${Authorization}`,
+              Refreshtoken: `${Refreshtoken}`
+            }
             const { subComment_id, edit_body } = edit_subComment;
-            const response = await axios.patch(
-                `http://warmwinter.co.kr/api/subcomments/${subComment_id}`,
-                edit_body
+            const response = await axios.put(
+                `http://warmwinter.co.kr/api/subcomments/${subComment_id}`,edit_body,{headers: headers}
             );
             const edit_id = response.data;
             return thunkAPI.fulfillWithValue(edit_id);
@@ -62,7 +79,15 @@ export const __deleteSubComment = createAsyncThunk(
     "reply/__deleteSubComment",
     async (subComment_id, thunkAPI) => {
         try {
-            await axios.delete(`http://localhost:3001/reply/${subComment_id}`)
+            const Refreshtoken = localStorage.getItem('refreshToken');
+            const Authorization = localStorage.getItem('authorization');
+            const headers = {
+              'Content-Type': 'application/json',
+              Authorization: `${Authorization}`,
+              Refreshtoken: `${Refreshtoken}`
+            }
+            await axios.delete(`http://warmwinter.co.kr/api/subcomments/${subComment_id}`, {headers: headers}, {})
+            console.log(headers)
             return thunkAPI.fulfillWithValue(subComment_id);
         } catch (error) {
 

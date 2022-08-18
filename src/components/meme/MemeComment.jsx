@@ -12,6 +12,7 @@ const MemeComment = ({ comment, isSelected, handleClick, elementIndex }) => {
     const [comments, setComments] = useState("");
     const { postId } = useParams()
 
+    console.log(comment)
 
     const black_pattern = /^\s+|\s+$/g;
 
@@ -32,9 +33,7 @@ const MemeComment = ({ comment, isSelected, handleClick, elementIndex }) => {
         const edit_comment = {
             comment_id,
             edit_body: {
-                postId: parseInt(postId),
-                comment: comments,
-                userCommented: comment.username
+                contents: comments,
             }
         }
         dispatch(__editComment(edit_comment));
