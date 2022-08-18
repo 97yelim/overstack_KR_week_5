@@ -1,6 +1,12 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+const urlLike = {
+  like: process.env.REACT_APP_LIKE
+}
+
+
+
 // initialState
 const initialState = {
   data: true,
@@ -21,7 +27,7 @@ export const __toggleLike = createAsyncThunk(
         Refreshtoken: `${Refreshtoken}`
       }
       const response = await axios.post(
-        `http://warmwinter.co.kr/api/posts/heart/${postId}`,{},{headers: headers} 
+        `${urlLike.like}/${postId}`,{},{headers: headers} 
       );
       return thunkAPI.fulfillWithValue(response.data);
     } catch (error) {
