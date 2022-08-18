@@ -25,6 +25,10 @@ export default Footer;
 
 const FooterDiv = styled.div`
     border-top: 1px solid #efefef;
+    div div{
+        padding:0 30px;
+        box-sizing: border-box;
+    }
     a {
         padding: 4px 5px;
         border-radius: 5px;

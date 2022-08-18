@@ -131,6 +131,7 @@ const Createform = styled.form`
     }
     @media screen and (max-width: 600px) {
         padding: 0 30px;
+        box-sizing: border-box;
         input {
             width: 80%;
         }
