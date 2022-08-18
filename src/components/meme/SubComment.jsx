@@ -32,10 +32,10 @@ const SubComment = ({ subComment }) => {
         const edit_subComment = {
             subComment_id,
             edit_body: {
-                postId: postId,
-                subComment: subComments,
-                userSubCommented: "퉁퉁이",
-                commentId: subComment.commentId,
+                // postId: postId,
+                contents: subComments,
+                // userSubCommented: "퉁퉁이",
+                // commentId: subComment.commentId
                 subCommentOwner :subComment.subCommentOwner
             }
         }
@@ -44,7 +44,9 @@ const SubComment = ({ subComment }) => {
         setSubComments("");
     }
     const subCommentOwner = subComment.subCommentOwner
+
     const onDelete = (subComment_id) => {
+        console.log(subComment.id)
         dispatch(__deleteSubComment(subComment_id))
     }
 

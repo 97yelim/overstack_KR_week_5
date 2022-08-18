@@ -1,25 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux/es/exports';
+import { __deleteComment, __editComment, __getComments } from '../../redux/modules/comment';
+import { useParams } from 'react-router-dom';
+import SubCommentView from './SubCommentView';
 
-const MemeComment = ({comment}) => {
-
-
-<<<<<<< Updated upstream
-    return (
-        <StMemeComment>
-            <div>
-                <div>{comment.userCommented}</div>
-                <div>
-                    <StButton>수정</StButton>
-                    <StButton>삭제</StButton>
-                </div>
-            </div>
-            <div>
-                <div>{comment.comment}</div>
-                <StButton>답글</StButton>
-            </div>
-        </StMemeComment>
-=======
+const MemeComment = ({ comment, isSelected, handleClick, elementIndex }) => {
+    const [commentNum, setCommentNum] = useState(-1);
+    const dispatch = useDispatch();
+    const [comments, setComments] = useState("");
+    const { postId } = useParams()
     const black_pattern = /^\s+|\s+$/g;
 
     const onChangeHandler = (e) => {
@@ -56,6 +47,7 @@ const MemeComment = ({comment}) => {
     }
 
     return (
+
         <>
             {commentNum !== comment.id ? (
                 <StMemeComment>
@@ -90,7 +82,6 @@ const MemeComment = ({comment}) => {
                 </StMemeComment>
             )}
         </>
->>>>>>> Stashed changes
     );
 };
 
@@ -111,15 +102,7 @@ const StButton = styled.button`
     padding: 10px 15px;
     border-radius: 15px;
     border: none;
-    color: ${(props) => props.theme.colors.textColor2};
-    background-color: ${(props) => props.theme.colors.buttonColor};
     margin-left: 10px;
-<<<<<<< Updated upstream
-    &:hover {
-        color: ${(props) => props.theme.colors.textColor1};
-        background-color: ${(props) => props.theme.colors.mainColor};
-    }
-=======
     display: ${props => `${props.commentOwner}` ? 'none' : 'block'};
 `
 
@@ -129,7 +112,10 @@ const SubButton = styled.button`
     border-radius: 15px;
     border: none;
     margin-left: 10px;
->>>>>>> Stashed changes
 `
+const StInput = styled.input`
+    width: 80%;
+`
+
 
 export default MemeComment;

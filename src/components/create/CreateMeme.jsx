@@ -1,99 +1,98 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
-import { __createPost } from '../../redux/modules/post';
 import styled from 'styled-components';
+import axios from 'axios';
+import { useForm } from "react-hook-form"
 
 const CreateMeme = () => {
     const [files, setFiles] = useState(''); // 파일 프리뷰 state 작성 
-    const [title, setTitle] = useState('') //제목 state 
-    const dispatch = useDispatch()
     const navigate = useNavigate()
+    const { register, handleSubmit, formState: { errors } } = useForm();
 
-    const onChangeHandler = (e) => {
-        const id = e.target.id;
-        const value = e.target.value;
-        console.log(id)
-        if(!value) {
-            return 
-        }else{
-            if(id === 'title') setTitle(value);
-        }
-    };
+    const black_pattern = /^\s+|\s+$/g;
+    const isBlank = (value) => (
+        value.replace(black_pattern, '') === "" ? false : true
+    )
 
-    const onSubmitHandler = (e) => {
-        e.preventDefault();
-        if (!title){
-            return alert('이봐 친구!! 제목이 비어있어!! 다시 확인해봐!')
-        };
-        const new_post = {
-            title
+    const onSubmitHandler = async () => {
+        const form = document.getElementById('form');
+
+        const formData = new FormData(form);
+
+        console.log([...formData])
+        try {
+            const Refreshtoken = localStorage.getItem('refreshToken');
+            const Authorization = localStorage.getItem('authorization');
+            const headers = {
+                'Content-Type': 'application/json',
+                Authorization: `${Authorization}`,
+                Refreshtoken: `${Refreshtoken}`
+            }
+            const res = await axios.post('http://warmwinter.co.kr/api/posts', formData, {headers: headers} )
+            console.log(res)
+        } catch (err) {
+            console.log(err);
         }
-        dispatch(__createPost(new_post));
         navigate('/main');
     }
-    
 
-    useEffect(()=>{
+
+    useEffect(() => {
         preview();
 
-        return()=>preview();
+        return () => preview();
     });
 
 
     const onLoadFile = (e) => {
-        const file = e.target.files;
-        console.log(file)
-        setFiles(file)
-    }
+        setFiles(e.target.files[0]);
 
-    const preview = () =>{
-        if(!files) return false;
+    }
+    const preview = () => {
+        if (!files) return false;
         const imgEl = document.querySelector('#imgPreview')
         const reader = new FileReader();
 
         reader.onload = () =>
-            (imgEl.style.backgroundImage = `url(${reader.result})`,
-            imgEl.style.backgroundSize = "cover");
-        reader.readAsDataURL(files[0])
-        console.log(reader)
+        (imgEl.style.backgroundImage = `url(${reader.result})`,
+            imgEl.style.backgroundSize = "cover",
+            imgEl.style.backgroundPosition = "center");
+        reader.readAsDataURL(files)
     }
-    
-      
+
+
     return (
-        <Createform  onSubmit={onSubmitHandler}>
+        <Createform onSubmit={handleSubmit(onSubmitHandler)} id="form">
             <p>짤방 제목 등록하기</p>
             <div>
-                <label htmlFor="">제목</label>
-                <input 
+                <label htmlFor="title">제목</label>
+                <input
                     type='text'
-                    id = 'title'
+                    id='title'
+                    name='title'
                     placeholder='제목을 지어주세요.'
-                    onChange={onChangeHandler}
-                    />
+                    {...register("title", {
+                        required: true, maxLength: 30, validate:
+                            value => isBlank(value)
+                    })}
+                />
+                {errors.title && errors.title.type === "required" && <p>이봐 친구!! 제목이 비어있어!! 다시 확인해봐!</p>}
+                {errors.title && errors.title.type === "maxLength" && <p>제목이 너무 길어요!</p>}
+                {errors.title && errors.title.type === "validate" && <p>음.... 제목에 공백만 있는건 좀...</p>}
             </div>
             <div>
-<<<<<<< Updated upstream
-            <label htmlFor="">이미지 선택하기</label>
-            <input type="file" id="image" accept='image/*' onChange={onLoadFile} />
-           
-            <span>권장 이미지 크기 : 600px * 600px</span>
-            <ImgPreview id='imgPreview'></ImgPreview>
-
-=======
                 <label htmlFor="file">이미지 선택하기</label>
-                <input 
-                    type="file" 
-                    id="image" 
-                    name='file' 
-                    accept='image/*' 
-                    onChange={onLoadFile} 
+                <input
+                    type="file"
+                    id="image"
+                    name='file'
+                    accept='image/*'
+                    onChange={onLoadFile}
                 />
                 <p>권장 이미지 크기 : 600px * 600px</p>
                 <ImgPreview id='imgPreview'></ImgPreview>
->>>>>>> Stashed changes
             </div>
-            <button onClick={onSubmitHandler}>게시하기</button>
+            <button>게시하기</button>
         </Createform>
     );
 };
@@ -125,8 +124,6 @@ const Createform = styled.form`
     input{
         margin-bottom: 30px;
     }
-<<<<<<< Updated upstream
-=======
     div > p {
         color:${(props) => props.theme.colors.subColor2};
         font-size: 14px;
@@ -138,7 +135,7 @@ const Createform = styled.form`
             width: 80%;
         }
     }
->>>>>>> Stashed changes
+
 `
 
 const ImgPreview = styled.div`

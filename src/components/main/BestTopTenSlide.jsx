@@ -1,4 +1,10 @@
-import React, { useRef, useState } from "react";
+import React  from "react";
+import styled from "styled-components";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { __getBestPosts } from "../../redux/modules/post";
+import { useSelector } from "react-redux";
+import BestTopTenContents from "./BestTopTenContents";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -10,7 +16,19 @@ import "swiper/css/pagination";
 // import required modules
 import { FreeMode, Pagination } from "swiper";
 
+
+
 export default function App() {
+  const dispatch = useDispatch()
+  const bestposts = useSelector((state) => state.post.bestposts)
+
+  useEffect(() => {
+    dispatch(__getBestPosts());
+  }, [dispatch]);
+
+  console.log(bestposts)
+
+
   return (
     <>
       <StSubTitle>#자랑스러운 우수 수강생 작품들 🏆</StSubTitle>
@@ -24,16 +42,9 @@ export default function App() {
         modules={[FreeMode, Pagination]}
         className="mySwiper"
       >
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
-        <SwiperSlide>Slide 5</SwiperSlide>
-        <SwiperSlide>Slide 6</SwiperSlide>
-        <SwiperSlide>Slide 7</SwiperSlide>
-        <SwiperSlide>Slide 8</SwiperSlide>
-        <SwiperSlide>Slide 9</SwiperSlide>
-        <SwiperSlide>Slide </SwiperSlide>
+        {bestposts.map((bestpost) => 
+          <SwiperSlide key={bestpost.id}><BestTopTenContents key={bestpost.id} bestpost={bestpost}>Slide 1</BestTopTenContents></SwiperSlide>
+        )}
       </Swiper>
     </>
   );

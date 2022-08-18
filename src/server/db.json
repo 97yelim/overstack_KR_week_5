@@ -5,16 +5,16 @@
       "userNickname": "작성자3",
       "imageUrl": "/images/cancle.png",
       "title": "게시글 제목입니다3",
-      "likeNumber": 0,
-      "isLike": true
+      "like_num": 0,
+      "comment_num": 0
     },
     {
       "id": 5,
       "userNickname": "작성자5",
       "imageUrl": "/images/cancle.png",
       "title": "게시글 제목입니다5",
-      "likeNumber": 0,
-      "isLike": true
+      "like_num": 0,
+      "comment_num": 0
     }
   ],
   "comments": [

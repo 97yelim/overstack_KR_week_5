@@ -1,70 +1,102 @@
-# Getting Started with Create React App
+# 미니프로젝트 " 제목 대학"
+* * *
+![](https://velog.velcdn.com/images/piczo/post/7441e92a-b65c-4bb6-bca2-af1d56bde74e/image.png)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### FrontEnd : 김예림, 박수원
+### BackEnd : 조원영, 강지영, 김재경
+### 내가 가진 짤방으로 대회 열기!
+* **내가 가지고 있는 짤방으로 제목학원의 대회를 열어 엄청나게 적절한 제목을 달아서 감탄이 절로 나오는 제목을 만들어봅시다!**
 
-## Available Scripts
+* **<span style="color:orange">`공유할 게시글 작성`</span>** **<span style="color:green">`게시글 댓글 달기`</span>** **<span style="color:purple">`마음에 드는 게시물을 좋아요`</span>**
 
-In the project directory, you can run:
+### 🍰 **제목학원 서비스 바로가기**
 
-### `yarn start`
+### 🎬 **서비스 시연 영상**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## ✨ 기능설명
+* * *
+### 회원가입
+<details>
+<summary> Join Membership </summary>
+<div markdown="1">
+<br>
+전체적으로 응답 바디에 HTTP Status Code와 메세지를 출력하도록 구현
+<br><br>
+유효성 검사를 통해 ID중복, Nickname중복 등 기본적인 기능 구현
 
-### `yarn test`
+</div>
+</details>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+### 2. 로그인
+<details>
+<summary> LogIn</summary>
+<div markdown="1">
+<br>
+로그인 시에 토큰이 자동적으로 헤더에 들어오도록 기능 구현
+<br><br>
+토큰 만료시간은 30분으로 구현
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+</div>
+</details>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 3. 메인 페이지
+<details>
+<summary> Main</summary>
+<div markdown="1">
+<br>
+베스트 탑 텐을 슬라이드로 출력
+<br><br>
+포스팅된 게시글 리스트를 최신순으로 출력
 
-### `yarn eject`
+</div>
+</details>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 4. 베스트 탑 텐
+<details>
+<summary> Best</summary>
+<div markdown="1"> <br>
+추천 수가 10개가 넘는 게시물 중 상위 게시물 10개 리스트 출력
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+</div>
+</details>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 5. 게시글
+<details>
+<summary> CreatePost </summary>
+<div markdown="1">
+<br>
+로그인이 된 회원만 게시글을 작성할 수 있도록 구현
+<br><br>
+사용자가 원하는 제목과 사진을 최신순으로 저장
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+</div>
+</details>
+<br>
+<details>
+<summary> MemePost </summary>
+<div markdown="1">
+<br>
+포스팅된 게시글(전체/특정), 코멘트(전체/특정)을 최신순으로 조회할 수 있는 기능 구현
+<br><br>
+로그인한 사용자가 마음에 드는 게시글에 추천(추천 취소) 할 수 있는 기능 구현
+<br><br>
+로그인한 사용자가 특정 게시글에 원하는 코멘트를 등록할 수 있는 기능 구현
+<br><br>
+게시글 및 코멘트의 작성자 본인만 수정 및 삭제할 수 있는 기능 구현
 
-## Learn More
+</div>
+</details>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+### 🔨 API 설계
+* * *
+[API 설계 한눈에 보기](https://www.notion.so/2b81effeaf7c41dcaad6ad4d6710bf0a?v=7b9e7b62e89c4f85b4c69cf2f82d65ca)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### 🐛 트러블 슈팅
+* * *
+[트러블 슈팅 한눈에 보기](https://www.notion.so/3e8d6c91e79945439542128329b3264e)

@@ -1,20 +1,27 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
+import styled from "styled-components";
+import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 
-const BestTopTenContents = () => {
+const BestTopTenContents = ({ bestpost }) => {
+    console.log(bestpost.like_num)
+    const bestpostUrl = bestpost.imageUrl;
     return (
-        <div>
-            
-        </div>
+        <StSlide bestpostUrl={bestpostUrl}>
+            <h3>{bestpost.title}</h3>
+            <div>
+                <p>{bestpost.userNickname}</p>
+                <span><FontAwesomeIcon icon={faThumbsUp}/>{bestpost.like_num}</span>
+            </div>
+        </StSlide>
     );
 };
 
-<<<<<<< Updated upstream
-export default BestTopTenContents;
-=======
 export default BestTopTenContents;
 
 const StSlide = styled.div`
   height: 300px;
+
   background : linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 40%, rgba(0,0,0,0) 100%), ${props => `url(${props.bestpostUrl})`};
   color: #fff;
   background-position: center;
@@ -36,4 +43,3 @@ const StSlide = styled.div`
     justify-content: space-between;
   }
 `
->>>>>>> Stashed changes

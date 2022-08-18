@@ -1,57 +1,62 @@
 import React from 'react';
 import styled from 'styled-components';
-import MemeCommentForm from './MemeCommentForm';
-import MemeCommentList from './MemeCommentList';
 import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from "react";
-import { __getPost } from "../../redux/modules/post";
+import { __deletePost, __getPost } from "../../redux/modules/post";
+import { faThumbsDown } from '@fortawesome/free-regular-svg-icons';
+import { __toggleLike } from '../../redux/modules/like';
+import { useNavigate } from 'react-router-dom';
+import MemeCommentView from './MemeCommentView';
+
 
 const MemeContents = () => {
     const { postId } = useParams();
-    const navigate = useNavigate();
     const dispatch = useDispatch();
     const post = useSelector((state) => state.post.post);
-<<<<<<< Updated upstream
-    const { id, title, userNickname } = post;
-=======
     const { title, userNickname } = post;
-    // const likeNumber = useSelector((state) => state.like.likeNumber)
-    const isLike = useSelector((state) => state.like.isLike)
-    const likeNumber = useSelector((state) => state.post.like_num)
+    const isLike = useSelector((state) => state.like)
+    const likeNumber = useSelector((state) => state.post.post.like_num)
     const navigate = useNavigate();
-    const loginUerNickname = localStorage.getItem('nickname')
-    console.log(likeNumber)
->>>>>>> Stashed changes
 
     useEffect(() => {
         dispatch(__getPost(postId));
-        console.log(title)
-      }, [dispatch, postId]);
+      }, [dispatch, postId, isLike]);
 
-
+    const onisLike = async() => {
+        dispatch(__toggleLike(postId))
+    }
+    
+    const onDeleteHandler = () => {
+        let answer = window.confirm("정말 지울 거예요??");
+        if (!answer) return;
+        dispatch(__deletePost(postId))
+        navigate("/main")
+    }
+    
     return (
         <div>
             <StMemeHeader  loginUerNickname={loginUerNickname} userNickname={userNickname}>
                 <div>작성날짜 00/00/00</div>
-                <button>삭제하기</button>
+                <button onClick={onDeleteHandler}>삭제하기</button>
             </StMemeHeader>
-            <StImgbox>
+            <StImgbox imgUrl = {post.imageUrl}>
                 <StTitle>
                     <div>
                         <h1>{title}</h1>
-                        <p><FontAwesomeIcon icon={faThumbsUp} /> 212</p>
+                        {isLike ? (<p><FontAwesomeIcon icon={faThumbsUp} />{likeNumber}</p>)
+                            :(<p><FontAwesomeIcon icon={faThumbsDown} />{likeNumber}</p>)}
                     </div>
                     <div>
                         <p>작성자: {userNickname}</p>
-                        <button><FontAwesomeIcon icon={faThumbsUp}/></button>
+                        {isLike ? (<button onClick={onisLike}><FontAwesomeIcon icon={faThumbsUp} /></button>) 
+                            : (<button onClick={onisLike}><FontAwesomeIcon icon={faThumbsDown} /></button>)}
                     </div>
                 </StTitle>
             </StImgbox>
-            <MemeCommentForm />
-            <MemeCommentList />
+            <MemeCommentView/>
         </div>
     );
 };
@@ -59,14 +64,10 @@ const MemeContents = () => {
 const StImgbox = styled.div`
     width: 600px;
     height: 600px;
-<<<<<<< Updated upstream
-    background-image: "";
-=======
+
     background:linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 40%, rgba(0,0,0,0) 100%), ${props => `url(${props.imgUrl})`};
->>>>>>> Stashed changes
     background-position: center;
     background-size: cover;
-    background-color: ${(props) => props.theme.colors.mainColor};
     border-radius: 20px;
     margin: 30px auto 130px;
     position: relative;
@@ -78,12 +79,8 @@ const StImgbox = styled.div`
 const StTitle = styled.div`
     position: absolute;
     bottom: 0px;
-<<<<<<< Updated upstream
-    padding: 20px;
-=======
     padding: 25px;
     color: #fff;
->>>>>>> Stashed changes
     div {
         width: 560px;
         display: flex;
@@ -93,18 +90,6 @@ const StTitle = styled.div`
         h1 {
             font-size: ${(props) => props.theme.fontsizes.subtitle}
         }
-<<<<<<< Updated upstream
-        button {
-            transition: all 0.3s;
-            border: none;
-            background-color: ${(props) => props.theme.colors.buttonColor};
-            color: ${(props) => props.theme.colors.textColor2};
-            padding: 10px 30px;
-            border-radius: 15px;
-            &:hover {background-color: #fff;
-                color: ${(props) => props.theme.colors.textColor1};
-            };
-=======
         >button {
             background-color: #fff;
             color: #000;
@@ -118,7 +103,6 @@ const StTitle = styled.div`
         width: 90%;
         div{
             width: 100%;
->>>>>>> Stashed changes
         }
     }
 `
@@ -132,13 +116,7 @@ const StMemeHeader = styled.div`
         display : ${props => `${props.userNickname}` === `${props.loginUerNickname}` ? `block` : `none`};
         transition: all 0.3s;
         border: none;
-        background-color: ${(props) => props.theme.colors.buttonColor};
-        color: ${(props) => props.theme.colors.textColor2};
         padding: 10px 15px;
-        border-radius: 15px;
-        &:hover {background-color: ${(props) => props.theme.colors.hoverColor};
-            color: ${(props) => props.theme.colors.textColor1};
-        };
     }
     @media screen and (max-width: 600px){
         padding: 10px 30px;
