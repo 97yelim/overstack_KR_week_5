@@ -1,6 +1,9 @@
 import {createSlice, createAsyncThunk} from "@reduxjs/toolkit"
 import axios from "axios";
 
+const urlLogin = {
+    login: process.env.REACT_APP_LOGIN
+}
 
 const LOGIN = "user/LOGIN"
 const LOGOUT = "user/LOGOUT"
@@ -26,7 +29,7 @@ export const __loginDB  = createAsyncThunk(
     "user/__logoinDB",
     async(data ,thunkAPI) =>{
         try{
-            const response = await axios.post('http://warmwinter.co.kr/api/member/login', data);
+            const response = await axios.post(urlLogin.login, data);
             if(response.data.success === false){
                 window.alert(response.data.error.message)
                 return thunkAPI.rejectWithValue();

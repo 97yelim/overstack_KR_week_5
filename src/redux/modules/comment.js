@@ -1,6 +1,15 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+const urlComments = {
+  comments: process.env.REACT_APP_COMMENTS
+}
+
+const urlGetComments = {
+  comments: process.env.REACT_APP_GETCOMMENTS
+}
+
+
 // initialState
 const initialState = {
   comments: [],
@@ -22,7 +31,7 @@ export const __createComment = createAsyncThunk(
         Refreshtoken: `${Refreshtoken}`
       }
       const response = await axios.post(
-        "http://warmwinter.co.kr/api/comments",new_comment,{headers: headers}
+        urlComments.comments,new_comment,{headers: headers}
       );
       console.log(response.data)
       return thunkAPI.fulfillWithValue(response.data)
@@ -44,7 +53,7 @@ export const __getComments = createAsyncThunk(
         Refreshtoken: `${Refreshtoken}`
       }
       const response = await axios.get(
-        `http://warmwinter.co.kr/api/comments?postId=${postId}`,{},{headers: headers});
+        `${urlGetComments.comments}${postId}`,{},{headers: headers});
       return thunkAPI.fulfillWithValue(response.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -65,7 +74,7 @@ export const __editComment = createAsyncThunk(
       }
       const { comment_id, edit_body } = edit_comment;
       const response = await axios.put(
-        `http://warmwinter.co.kr/api/comments/${comment_id}`,edit_body,{headers: headers});
+        `${urlComments.comments}/${comment_id}`,edit_body,{headers: headers});
       const edit_id = response.data;
       return thunkAPI.fulfillWithValue(edit_id);
     } catch (error) {
@@ -85,7 +94,7 @@ export const __deleteComment = createAsyncThunk(
         Authorization: `${Authorization}`,
         Refreshtoken: `${Refreshtoken}`
       }
-      await axios.delete(`http://warmwinter.co.kr/api/comments/${comment_id}`,{headers: headers})
+      await axios.delete(`${urlComments.comments}/${comment_id}`,{headers: headers})
       return thunkAPI.fulfillWithValue(comment_id);
     } catch (error) {
 

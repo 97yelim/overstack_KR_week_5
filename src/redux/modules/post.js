@@ -1,6 +1,13 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+const urlPosts = {
+  posts: process.env.REACT_APP_POSTS
+}
+const urlBestPosts = {
+  bestPosts: process.env.REACT_APP_BESTPOST
+}
+
 // initialState
 const initialState = {
   posts: [],
@@ -22,7 +29,7 @@ export const __getBestPosts = createAsyncThunk(
         Authorization: `${Authorization}`,
         Refreshtoken: `${Refreshtoken}`
       }
-      const response = await axios.get("http://warmwinter.co.kr/api/bestpost",{},{headers: headers} 
+      const response = await axios.get(urlBestPosts.bestPosts,{},{headers: headers} 
       );
       return thunkAPI.fulfillWithValue(response.data);
     } catch (error) {
@@ -35,7 +42,7 @@ export const __getPosts = createAsyncThunk(
   "posts/__getPosts",
   async (args, thunkAPI) => {
     try {
-      const response = await axios.get("http://warmwinter.co.kr/api/posts");
+      const response = await axios.get(urlPosts.posts);
       return thunkAPI.fulfillWithValue(response.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -55,7 +62,7 @@ export const __getPost = createAsyncThunk(
         Refreshtoken: `${Refreshtoken}`
       }
       const response = await axios.get(
-        `http://warmwinter.co.kr/api/posts/${postId}`,{},{headers: headers} 
+        `${urlPosts.posts}/${postId}`,{},{headers: headers} 
       );
       return thunkAPI.fulfillWithValue(response.data);
     } catch (error) {
@@ -75,7 +82,7 @@ export const __deletePost = createAsyncThunk(
         Authorization: `${Authorization}`,
         Refreshtoken: `${Refreshtoken}`
       }
-      await axios.delete(`http://warmwinter.co.kr/api/posts/${postId}`,{headers: headers});
+      await axios.delete(`${urlPosts.posts}/${postId}`,{headers: headers});
       return thunkAPI.fulfillWithValue({ postId });
     } catch (error) {
       return thunkAPI.rejectWithValue(error)
