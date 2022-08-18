@@ -41,6 +41,7 @@ const MemeComment = ({ comment, isSelected, handleClick, elementIndex }) => {
         setComments("");
         dispatch(__getComments(postId))
     }
+    console.log(comment)
     const commentOwner = comment.commentOwner
     const onDelete = (comment_id) => {
         dispatch(__deleteComment(comment_id))
