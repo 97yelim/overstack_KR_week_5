@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { act } from "react-dom/test-utils";
 
 // initialState
 const initialState = {
@@ -25,6 +24,7 @@ export const __createComment = createAsyncThunk(
       const response = await axios.post(
         "http://warmwinter.co.kr/api/comments",new_comment,{headers: headers}
       );
+      console.log(response.data)
       return thunkAPI.fulfillWithValue(response.data)
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -105,7 +105,7 @@ const commentSlice = createSlice({
     },
     [__createComment.fulfilled]: (state, action) => {
       state.isLoading = false;
-      state.comments.push(action.payload);
+      state.success = action.payload;
     },
     [__createComment.rejected]: (state, action) => {
       state.isLoading = false;
