@@ -181,23 +181,3 @@ const SignUpForm = styled.form`
     }
 `
 
-
-
-
-
-
-
-
-
-
-
-박수원 (8기)에 메시지 보내기
-
-
-
-
-
-
-
-
-Shift + Enter 키를 눌러 새 행을 추가합니다
