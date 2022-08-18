@@ -20,6 +20,7 @@ const MemeContents = () => {
     const isLike = useSelector((state) => state.like)
     const likeNumber = useSelector((state) => state.post.post.like_num)
     const navigate = useNavigate();
+    const loginUerNickname = localStorage.getItem('nickname')
 
     useEffect(() => {
         dispatch(__getPost(postId));
