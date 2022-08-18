@@ -10,7 +10,7 @@ const SubComment = ({ subComment }) => {
     const dispatch = useDispatch();
     const [subComments, setSubComments] = useState("");
     const { postId } = useParams()
-
+    const loginUerNickname = localStorage.getItem('nickname')
 
     const black_pattern = /^\s+|\s+$/g;
 
@@ -35,7 +35,7 @@ const SubComment = ({ subComment }) => {
                 // postId: postId,
                 contents: subComments,
                 // userSubCommented: "퉁퉁이",
-                // commentId: subComment.commentId
+                commentId: subComment.commentId,
                 subCommentOwner :subComment.subCommentOwner
             }
         }
@@ -43,7 +43,10 @@ const SubComment = ({ subComment }) => {
         setSubCommentNum(-1);
         setSubComments("");
     }
-    const subCommentOwner = subComment.subCommentOwner
+    const subCommentOwner = subComment.userSubCommented
+    //const loginNickname = localStorage.getItem('nickname')
+    
+    console.log(subCommentOwner)
 
     const onDelete = (subComment_id) => {
         console.log(subComment.id)
@@ -57,8 +60,8 @@ const SubComment = ({ subComment }) => {
                     <div>
                         <div>{subComment.userSubCommented}</div>
                         <div>
-                            <StButton subCommentOwner={subCommentOwner} onClick={() => setSubCommentNum(subComment.id)}>수정</StButton>
-                            <StButton onClick={() => onDelete(subComment.id)}>삭제</StButton>
+                            <StButton loginUerNickname={loginUerNickname} subCommentOwner={subCommentOwner} onClick={() => setSubCommentNum(subComment.id)}>수정</StButton>
+                            <StButton loginUerNickname={loginUerNickname} subCommentOwner={subCommentOwner} onClick={() => onDelete(subComment.id)}>삭제</StButton>
                         </div>
                     </div>
                     <div>
@@ -105,7 +108,7 @@ const StButton = styled.button`
     border: none;
     margin-left: 10px;
     background-color: #cdcdcd;
-    display: ${props => `${props.subCommentOwner}` ? 'none' : 'block'};
+    display: ${props => `${props.subCommentOwner}` === `${props.loginUerNickname}` ? `block` : `none`};
 `
 const StInput = styled.input`
     width: 80%;

@@ -43,7 +43,7 @@ export const __getSubComments = createAsyncThunk(
               Refreshtoken: `${Refreshtoken}`
             }
             const response = await axios.get(
-                `http://warmwinter.co.kr/api/subcomments?commentId=${commentId}`,{},{headers: headers}
+                `http://warmwinter.co.kr/api/subcomments?commentId=${commentId}`,{},{headers: {headers}}
             );
             return thunkAPI.fulfillWithValue(response.data);
         } catch (error) {

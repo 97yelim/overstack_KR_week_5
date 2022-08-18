@@ -1,10 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect  }from 'react';
 import MemeComment from './MemeComment';
-import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { __getComments } from '../../redux/modules/comment';
-import { useState } from 'react';
 import styled from "styled-components";
 const MemeCommentList = () => {
     const { postId } = useParams();

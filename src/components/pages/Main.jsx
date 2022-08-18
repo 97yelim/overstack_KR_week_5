@@ -4,7 +4,7 @@ import Layout from '../common/Layout';
 import BestTopTenSlide from '../main/BestTopTenSlide';
 import BoardLayout from '../main/BoardLayout';
 import CreateBanner from '../main/CreateBanner';
-
+import Footer from '../common/Footer';
 const Main = () => {
     return (
         <>  
@@ -16,6 +16,7 @@ const Main = () => {
             <Layout>
                 <BoardLayout/>
             </Layout>
+            <Footer/>
         </>
     );
 };
