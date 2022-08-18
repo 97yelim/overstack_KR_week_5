@@ -1,15 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux/es/exports';
-import { useParams } from 'react-router-dom';
-import { __deleteSubComment, __editSubComment } from '../../redux/modules/subComment';
+import { useDispatch, useSelector } from 'react-redux/es/exports';
+import { __deleteSubComment, __editSubComment, __getSubComments } from '../../redux/modules/subComment';
 
 const SubComment = ({ subComment }) => {
     const [subCommentNum, setSubCommentNum] = useState(-1);
     const dispatch = useDispatch();
     const [subComments, setSubComments] = useState("");
-    const { postId } = useParams()
     const loginUerNickname = localStorage.getItem('nickname')
 
     const black_pattern = /^\s+|\s+$/g;
@@ -32,9 +30,7 @@ const SubComment = ({ subComment }) => {
         const edit_subComment = {
             subComment_id,
             edit_body: {
-                // postId: postId,
                 contents: subComments,
-                // userSubCommented: "퉁퉁이",
                 commentId: subComment.commentId,
                 subCommentOwner :subComment.subCommentOwner
             }
@@ -42,11 +38,10 @@ const SubComment = ({ subComment }) => {
         dispatch(__editSubComment(edit_subComment));
         setSubCommentNum(-1);
         setSubComments("");
+        dispatch(__getSubComments())
     }
     const subCommentOwner = subComment.userSubCommented
-    //const loginNickname = localStorage.getItem('nickname')
-    
-    console.log(subCommentOwner)
+
 
     const onDelete = (subComment_id) => {
         console.log(subComment.id)

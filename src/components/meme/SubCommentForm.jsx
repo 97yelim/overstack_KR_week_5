@@ -17,8 +17,6 @@ const SubCommentForm = ({ comment }) => {
 
     const onSubmit = (data) => {
         const new_subComment = {
-            // postId: parseInt(postId),
-            // userSubCommented: "퉁퉁이",
             contents: data.subComment,
             commentId: comment.id
         }

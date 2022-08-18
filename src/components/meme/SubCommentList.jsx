@@ -10,10 +10,11 @@ const SubCommentList = ({comment}) => {
 
     const dispatch = useDispatch();
     const subComments = useSelector((state) => state.subComment.subComments)
+    const success = useSelector((state) => state.subComment.success)
 
     useEffect(() => {
         dispatch(__getSubComments(comment.id));
-      }, [dispatch]);
+      }, [dispatch, success]);
 
 
     return (

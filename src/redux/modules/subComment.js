@@ -110,7 +110,7 @@ const subCommentSlice = createSlice({
         },
         [__createSubComment.fulfilled]: (state, action) => {
             state.isLoading = false;
-            state.subComments.push(action.payload);
+            state.success = action.payload;
         },
         [__createSubComment.rejected]: (state, action) => {
             state.isLoading = false;
