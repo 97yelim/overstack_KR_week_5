@@ -21,7 +21,14 @@ const CreateMeme = () => {
 
         console.log([...formData])
         try {
-            const res = await axios.post('http://warmwinter.co.kr/api/posts', formData)
+            const Refreshtoken = localStorage.getItem('refreshToken');
+            const Authorization = localStorage.getItem('authorization');
+            const headers = {
+                'Content-Type': 'application/json',
+                Authorization: `${Authorization}`,
+                Refreshtoken: `${Refreshtoken}`
+            }
+            const res = await axios.post('http://warmwinter.co.kr/api/posts', formData, {headers: headers} )
             console.log(res)
         } catch (err) {
             console.log(err);
@@ -64,9 +71,10 @@ const CreateMeme = () => {
                     id='title'
                     name='title'
                     placeholder='제목을 지어주세요.'
-                    {...register("title", { required: true, maxLength: 30, validate:
-                        value => isBlank(value)
-                    })}  
+                    {...register("title", {
+                        required: true, maxLength: 30, validate:
+                            value => isBlank(value)
+                    })}
                 />
                 {errors.title && errors.title.type === "required" && <p>이봐 친구!! 제목이 비어있어!! 다시 확인해봐!</p>}
                 {errors.title && errors.title.type === "maxLength" && <p>제목이 너무 길어요!</p>}
@@ -74,12 +82,12 @@ const CreateMeme = () => {
             </div>
             <div>
                 <label htmlFor="file">이미지 선택하기</label>
-                <input 
-                    type="file" 
-                    id="image" 
-                    name='file' 
-                    accept='image/*' 
-                    onChange={onLoadFile} 
+                <input
+                    type="file"
+                    id="image"
+                    name='file'
+                    accept='image/*'
+                    onChange={onLoadFile}
                 />
                 <span>권장 이미지 크기 : 600px * 600px</span>
                 <ImgPreview id='imgPreview'></ImgPreview>

@@ -15,9 +15,15 @@ export const __createComment = createAsyncThunk(
   "comments/__createComment",
   async (new_comment, thunkAPI) => {
     try {
+      const Refreshtoken = localStorage.getItem('refreshToken');
+      const Authorization = localStorage.getItem('authorization');
+      const headers = {
+        'Content-Type': 'application/json',
+        Authorization: `${Authorization}`,
+        Refreshtoken: `${Refreshtoken}`
+      }
       const response = await axios.post(
-        "http://warmwinter.co.kr/api/comments",
-        new_comment
+        "http://warmwinter.co.kr/api/comments",new_comment,{headers: headers}
       );
       return thunkAPI.fulfillWithValue(response.data)
     } catch (error) {
@@ -30,11 +36,15 @@ export const __getComments = createAsyncThunk(
   "posts/__getComments",
   async (postId, thunkAPI) => {
     try {
-      //http://warmwinter.co.kr/api/comments
-      //http://localhost:3001/comments?postId=${postId}
+      const Refreshtoken = localStorage.getItem('refreshToken');
+      const Authorization = localStorage.getItem('authorization');
+      const headers = {
+        'Content-Type': 'application/json',
+        Authorization: `${Authorization}`,
+        Refreshtoken: `${Refreshtoken}`
+      }
       const response = await axios.get(
-        `http://warmwinter.co.kr/api/comments?postId=${postId}`
-      );
+        `http://warmwinter.co.kr/api/comments?postId=${postId}`,{},{headers: headers});
       return thunkAPI.fulfillWithValue(response.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -46,11 +56,16 @@ export const __editComment = createAsyncThunk(
   "comments/__editComment",
   async (edit_comment, thunkAPI) => {
     try {
+      const Refreshtoken = localStorage.getItem('refreshToken');
+      const Authorization = localStorage.getItem('authorization');
+      const headers = {
+        'Content-Type': 'application/json',
+        Authorization: `${Authorization}`,
+        Refreshtoken: `${Refreshtoken}`
+      }
       const { comment_id, edit_body } = edit_comment;
-      const response = await axios.patch(
-        `http://warmwinter.co.kr/api/comments/${comment_id}`,
-        edit_body
-      );
+      const response = await axios.put(
+        `http://warmwinter.co.kr/api/comments/${comment_id}`,edit_body,{headers: headers});
       const edit_id = response.data;
       return thunkAPI.fulfillWithValue(edit_id);
     } catch (error) {
@@ -63,7 +78,14 @@ export const __deleteComment = createAsyncThunk(
   "comments/__deleteComment",
   async (comment_id, thunkAPI) => {
     try {
-      await axios.delete(`http://warmwinter.co.kr/api/comments/${comment_id}`)
+      const Refreshtoken = localStorage.getItem('refreshToken');
+      const Authorization = localStorage.getItem('authorization');
+      const headers = {
+        'Content-Type': 'application/json',
+        Authorization: `${Authorization}`,
+        Refreshtoken: `${Refreshtoken}`
+      }
+      await axios.delete(`http://warmwinter.co.kr/api/comments/${comment_id}`,{headers: headers})
       return thunkAPI.fulfillWithValue(comment_id);
     } catch (error) {
 

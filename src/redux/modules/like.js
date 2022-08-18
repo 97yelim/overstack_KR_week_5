@@ -3,27 +3,32 @@ import axios from "axios";
 
 // initialState
 const initialState = {
-    likeNumber: 0,
-    isLike: true,
-    isLoading: false,
-    success: null,
-    error: null,
+  data: true,
+  isLoading: false,
+  success: null,
+  error: null,
 };
 
 export const __toggleLike = createAsyncThunk(
-    "like/__toggleLike",
-    async (isLike, thunkAPI) => {
-      try {
-        const response = await axios.patch(
-          "http://localhost:3001/like/",
-          {isLike: isLike}
-        );
-        return thunkAPI.fulfillWithValue(isLike);
-      } catch (error) {
-        return thunkAPI.rejectWithValue(error);
+  "like/__toggleLike",
+  async (postId, thunkAPI) => {
+    try {
+      const Refreshtoken = localStorage.getItem('refreshToken');
+      const Authorization = localStorage.getItem('authorization');
+      const headers = {
+        'Content-Type': 'application/json',
+        Authorization: `${Authorization}`,
+        Refreshtoken: `${Refreshtoken}`
       }
+      const response = await axios.post(
+        `http://warmwinter.co.kr/api/posts/heart/${postId}`,{},{headers: headers} 
+      );
+      return thunkAPI.fulfillWithValue(response.data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
     }
-  )
+  }
+)
 
 
 
@@ -35,15 +40,15 @@ const postSlice = createSlice({
   reducer: {},
   extraReducers: {
     [__toggleLike.pending]: (state, action) => {
-        state.isLoading = true;
+      state.isLoading = true;
     },
     [__toggleLike.fulfilled]: (state, action) => {
-        state.isLoading = false;
-        state.isLike = action.payload;
+      state.isLoading = false;
+      state.data = action.payload;
     },
     [__toggleLike.rejected]: (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
+      state.isLoading = false;
+      state.error = action.payload;
     },
   }
 })
