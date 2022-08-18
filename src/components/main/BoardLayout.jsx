@@ -27,12 +27,12 @@ const BoardLayout = () => {
 
 
     return (
-        <div>
+        <CommentListDiv>
             <StSubTitle>#제목 대학 수강생 작품들👨‍🏫</StSubTitle>
             {isLoading ? <p>In Loading...</p> : null}
             {error ? <p>{error.message}</p> : null}
             {!isLoading && !error ? posts : null}
-        </div>
+        </CommentListDiv>
     );
 };
 
@@ -41,6 +41,11 @@ const StSubTitle = styled.h2`
     color: ${(props) => props.theme.colors.textColor1};
     padding: 60px 0px 30px 0px;
     border-bottom: 1px solid #efefef;
+`
+const CommentListDiv = styled.div`
+     @media screen and (max-width: 600px) {
+        padding: 0 30px;
+    }
 `
 
 export default BoardLayout;

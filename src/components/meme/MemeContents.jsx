@@ -14,7 +14,17 @@ const MemeContents = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const post = useSelector((state) => state.post.post);
+<<<<<<< Updated upstream
     const { id, title, userNickname } = post;
+=======
+    const { title, userNickname } = post;
+    // const likeNumber = useSelector((state) => state.like.likeNumber)
+    const isLike = useSelector((state) => state.like.isLike)
+    const likeNumber = useSelector((state) => state.post.like_num)
+    const navigate = useNavigate();
+    const loginUerNickname = localStorage.getItem('nickname')
+    console.log(likeNumber)
+>>>>>>> Stashed changes
 
     useEffect(() => {
         dispatch(__getPost(postId));
@@ -24,7 +34,7 @@ const MemeContents = () => {
 
     return (
         <div>
-            <StMemeHeader>
+            <StMemeHeader  loginUerNickname={loginUerNickname} userNickname={userNickname}>
                 <div>작성날짜 00/00/00</div>
                 <button>삭제하기</button>
             </StMemeHeader>
@@ -49,18 +59,31 @@ const MemeContents = () => {
 const StImgbox = styled.div`
     width: 600px;
     height: 600px;
+<<<<<<< Updated upstream
     background-image: "";
+=======
+    background:linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 40%, rgba(0,0,0,0) 100%), ${props => `url(${props.imgUrl})`};
+>>>>>>> Stashed changes
     background-position: center;
     background-size: cover;
     background-color: ${(props) => props.theme.colors.mainColor};
     border-radius: 20px;
-    margin: 0 auto;
+    margin: 30px auto 130px;
     position: relative;
+    @media screen and (max-width: 600px){
+        width: 90%;
+    }
 `
+
 const StTitle = styled.div`
     position: absolute;
     bottom: 0px;
+<<<<<<< Updated upstream
     padding: 20px;
+=======
+    padding: 25px;
+    color: #fff;
+>>>>>>> Stashed changes
     div {
         width: 560px;
         display: flex;
@@ -70,6 +93,7 @@ const StTitle = styled.div`
         h1 {
             font-size: ${(props) => props.theme.fontsizes.subtitle}
         }
+<<<<<<< Updated upstream
         button {
             transition: all 0.3s;
             border: none;
@@ -80,6 +104,21 @@ const StTitle = styled.div`
             &:hover {background-color: #fff;
                 color: ${(props) => props.theme.colors.textColor1};
             };
+=======
+        >button {
+            background-color: #fff;
+            color: #000;
+            &:hover{
+                background-color: ${(props) => props.theme.colors.hoverColor};
+                color: #fff
+            }
+        }
+    }
+    @media screen and (max-width: 600px){
+        width: 90%;
+        div{
+            width: 100%;
+>>>>>>> Stashed changes
         }
     }
 `
@@ -88,7 +127,9 @@ const StMemeHeader = styled.div`
     display: flex;
     justify-content: space-between;
     padding: 10px;
+    margin: 70px 0;
     button {
+        display : ${props => `${props.userNickname}` === `${props.loginUerNickname}` ? `block` : `none`};
         transition: all 0.3s;
         border: none;
         background-color: ${(props) => props.theme.colors.buttonColor};
@@ -98,6 +139,9 @@ const StMemeHeader = styled.div`
         &:hover {background-color: ${(props) => props.theme.colors.hoverColor};
             color: ${(props) => props.theme.colors.textColor1};
         };
+    }
+    @media screen and (max-width: 600px){
+        padding: 10px 30px;
     }
 `
 
