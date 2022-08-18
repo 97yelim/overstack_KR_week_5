@@ -18,14 +18,7 @@ export function UserLogOut (user){
 
 
 const initialState = {
-    user: {
-        id:null,
-        email : null,
-        nickname: null
-    },
-    isLogin : false,
-    token :'',
-    error:''
+    success : null
 }
 
 
@@ -42,7 +35,7 @@ export const __loginDB  = createAsyncThunk(
                 localStorage.setItem('refreshToken', response.headers.refreshtoken);
                 localStorage.setItem('nickname', response.data.data.nickname);
                 localStorage.setItem('isLogin', true);
-                return thunkAPI.fulfillWithValue(response.data.data)
+                return thunkAPI.fulfillWithValue(response.data)
             }
         }
         catch(error){
@@ -59,7 +52,7 @@ const userSlice = createSlice({
     reducers: {},
     extraReducers:{
         [__loginDB.fulfilled]: (state, action) => {
-            state.user = action.payload;
+            state.success = action.payload;
             state.isLogin = true
         },
         [__loginDB.rejected]: (state, action) => {

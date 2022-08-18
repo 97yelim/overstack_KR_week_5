@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import Login from '../modal/Login';
 import logo from '../../assets/img/logo.webp'
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 
 const Header = (props) => {
     const navigate = useNavigate();
@@ -12,7 +13,7 @@ const Header = (props) => {
     const modalClose = () => {
         setModalOpen(!modalOpen)
     }
-
+    const success = useSelector((state) => state.user.success)
     const isLogin = localStorage.getItem('isLogin');
     const nickname = localStorage.getItem('nickname');
     
